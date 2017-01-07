@@ -1,3 +1,8 @@
+Googleスタイルガイド（[https://github.com/google/styleguide](https://github.com/google/styleguide)）の日本語訳です。 
+
+<br/> 
+
+
 Google Style Guides
 ===================
 
