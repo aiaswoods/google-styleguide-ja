@@ -129,7 +129,18 @@ body {
 }
 
 em {
-  font-style: italic
+  font-family:Helvetica,Arial,'Hiragino Kaku Gothic Pro','ƒqƒ‰ƒMƒmŠpƒS Pro W3','MS PGothic',sans-serif;
+  font-style: italic;
+  margin: 0 .25em 0 .25em;
+}
+
+strong {
+  font-weight: bold;
+  margin: 0 .25em 0 .25em;
+}
+
+q {
+  margin: 0 .25em 0 .25em;
 }
 
 h1,
