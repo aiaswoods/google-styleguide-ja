@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Google JavaScript Style Guide</title>
+<title>Google JavaScript スタイルガイド</title>
 <link rel="stylesheet" type="text/css" href="javaguide.css">
 <script language="javascript" src="include/styleguide.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="https://www.google.com/favicon.ico" />
@@ -10,8 +10,8 @@
 </head>
 <body onload="initStyleGuide();">
 <div id="content">
-<h1>Google JavaScript Style Guide</h1>
-<h2 id="introduction">1 Introduction</h2>
+<h1>Google JavaScript スタイルガイド</h1>
+<h2 id="introduction">1 はじめに</h2>
 
 <p></p>
 
@@ -26,7 +26,7 @@ well. However, this document focuses primarily on the hard-and-fast rules that
 we follow universally, and avoids giving advice that isn't clearly enforceable
 (whether by human or tool). </p>
 
-<h3 id="terminology-notes">1.1 Terminology notes</h3>
+<h3 id="terminology-notes">1.1 用語について</h3>
 
 <p>In this document, unless otherwise clarified:</p>
 
@@ -43,28 +43,28 @@ and declarative statements are prescriptive and correspond to <em>must</em>.</p>
 
 <p>Other <q>terminology notes</q> will appear occasionally throughout the document.</p>
 
-<h3 id="guide-notes">1.2 Guide notes</h3>
+<h3 id="guide-notes">1.2 例文について</h3>
 
 <p>Example code in this document is <strong>non-normative</strong>. That is, while the examples
 are in Google Style, they may not illustrate the <em>only</em> stylish way to represent
 the code. Optional formatting choices made in examples must not be enforced as
 rules.</p>
 
-<h2 id="source-file-basics">2 Source file basics</h2>
+<h2 id="source-file-basics">2 ソースファイルの基本</h2>
 
-<h3 id="file-name">2.1 File name</h3>
+<h3 id="file-name">2.1 ファイル名</h3>
 
 <p>File names must be all lowercase and may include underscores (<code>_</code>) or dashes
 (<code>-</code>), but no additional punctuation. Follow the convention that your project
 uses. Filenames&#8217; extension must be <code>.js</code>.</p>
 
-<h3 id="file-encoding">2.2 File encoding: UTF-8</h3>
+<h3 id="file-encoding">2.2 文字エンコーディング: UTF-8</h3>
 
 <p>Source files are encoded in <strong>UTF-8</strong>.</p>
 
-<h3 id="special-characters">2.3 Special characters</h3>
+<h3 id="special-characters">2.3 特殊文字</h3>
 
-<h4 id="whitespace-characters">2.3.1 Whitespace characters</h4>
+<h4 id="whitespace-characters">2.3.1 空白文字</h4>
 
 <p>Aside from the line terminator sequence, the ASCII horizontal space character
 (0x20) is the only whitespace character that appears anywhere in a source
@@ -75,14 +75,14 @@ file. This implies that</p>
 <li><p>Tab characters are <strong>not</strong> used for indentation.</p></li>
 </ol>
 
-<h4 id="special-escape-sequences">2.3.2 Special escape sequences</h4>
+<h4 id="special-escape-sequences">2.3.2 特殊エスケープシーケンス</h4>
 
 <p>For any character that has a special escape sequence (<code>\'</code>, <code>\"</code>, <code>\\</code>, <code>\b</code>,
 <code>\f</code>, <code>\n</code>, <code>\r</code>, <code>\t</code>, <code>\v</code>), that sequence is used rather than the
 corresponding numeric escape (e.g <code>\x0a</code>, <code>\u000a</code>, or <code>\u{a}</code>). Legacy octal
 escapes are never used.</p>
 
-<h4 id="non-ascii-characters">2.3.3 Non-ASCII characters</h4>
+<h4 id="non-ascii-characters">2.3.3 非ASCII文字</h4>
 
 <p>For the remaining non-ASCII characters, either the actual Unicode character
 (e.g. <code>&#8734;</code>) or the equivalent hex or Unicode escape (e.g. <code>\u221e</code>) is used,
@@ -126,7 +126,7 @@ characters are used, an explanatory comment can be very helpful.</p>
 might not handle non-ASCII characters properly. If that happens, those programs
 are <strong>broken</strong> and they must be <strong>fixed</strong>.</p>
 
-<h2 id="source-file-structure">3 Source file structure</h2>
+<h2 id="source-file-structure">3 ソースファイルの構造</h2>
 
 <p>A source file consists of, <strong>in order</strong>:</p>
 
@@ -141,7 +141,7 @@ are <strong>broken</strong> and they must be <strong>fixed</strong>.</p>
 <p><strong>Exactly one blank line</strong> separates each section that is present, except the
 file's implementation, which may be preceded by 1 or 2 blank lines.</p>
 
-<h3 id="file-copyright">3.1 License or copyright information, if present</h3>
+<h3 id="file-copyright">3.1 ライセンスまたは著作権情報（存在するなら）</h3>
 
 <p>If license or copyright information belongs in a file, it belongs here.</p>
 
@@ -149,11 +149,11 @@ file's implementation, which may be preceded by 1 or 2 blank lines.</p>
 
 <p></p>
 
-<h3 id="file-fileoverview">3.2 <code>@fileoverview</code> JSDoc, if present</h3>
+<h3 id="file-fileoverview">3.2 <code>@fileoverview</code> JSDoc （存在するなら）</h3>
 
 <p>See <a href="#jsdoc-top-file-level-comments">??</a> for formatting rules.</p>
 
-<h3 id="file-goog-module">3.3 <code>goog.module</code> statement</h3>
+<h3 id="file-goog-module">3.3 <code>goog.module</code> ステートメント</h3>
 
 <p>All files must declare exactly one <code>goog.module</code> name on a single line: lines
 containing a <code>goog.module</code> declaration must not be wrapped, and are therefore an
@@ -179,13 +179,13 @@ be a child or parent of any other <code>goog.module</code> (for example,
 <code>goog.module('parent');</code> and <code>goog.module('parent.child');</code> cannot both exist,
 nor can <code>goog.module('parent');</code> and <code>goog.module('parent.child.grandchild');</code>).</p>
 
-<h4 id="file-es6-modules">3.3.2 ES6 Modules</h4>
+<h4 id="file-es6-modules">3.3.2 ES6 モジュール</h4>
 
 <p>Do not use ES6 modules yet (i.e. the <code>export</code> and <code>import</code> keywords), as their
 semantics are not yet finalized. Note that this policy will be revisited once
 the semantics are fully-standard.</p>
 
-<h3 id="file-goog-require">3.4 <code>goog.require</code> statements</h3>
+<h3 id="file-goog-require">3.4 <code>goog.require</code> ステートメント</h3>
 
 <p>Imports are done with <code>goog.require</code> statements, grouped together immediately
 following the module declaration. Each <code>goog.require</code> is assigned to a single
@@ -240,7 +240,7 @@ function someFunction() {
 
 
 
-<h3 id="file-implementation">3.5 The file&#8217;s implementation</h3>
+<h3 id="file-implementation">3.5 実装コード</h3>
 
 <p>The actual implementation follows after all dependency information is declared
 (separated by at least one blank line).</p>
@@ -249,7 +249,7 @@ function someFunction() {
 classes, functions, etc), as well as any exported symbols.
 </p>
 
-<h2 id="formatting">4 Formatting</h2>
+<h2 id="formatting">4 書式</h2>
 
 <p><strong>Terminology Note</strong>: <em>block-like construct</em> refers to the body of a class,
 function, method, or brace-delimited block of code.  Note that, by
@@ -259,9 +259,9 @@ object literal may optionally be treated as if it were a block-like construct.</
 <p>Tip: Use clang-format. The JavaScript community has invested effort to make
 sure clang-format <q>does the right thing</q> on JavaScript files.</p>
 
-<h3 id="formatting-braces">4.1 Braces</h3>
+<h3 id="formatting-braces">4.1 括弧</h3>
 
-<h4 id="formatting-braces-all">4.1.1 Braces are used for all control structures</h4>
+<h4 id="formatting-braces-all">4.1.1 全ての制御構造に括弧を用いる</h4>
 
 <p>Braces are required for all control structures (i.e. <code>if</code>, <code>else</code>, <code>for</code>, <code>do</code>,
 <code>while</code>, as well as any others), even if the body contains only a single
@@ -283,7 +283,7 @@ structure may omit braces and newlines.</p>
 <pre><code class="language-js prettyprint">if (shortCondition()) return;
 </code></pre>
 
-<h4 id="formatting-nonempty-blocks">4.1.2 Nonempty blocks: K&amp;R style</h4>
+<h4 id="formatting-nonempty-blocks">4.1.2 空でないブロック: K&amp;R スタイル</h4>
 
 <p>Braces follow the Kernighan and Ritchie style (<q><a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian brackets</a></q>) for
 <em>nonempty</em> blocks and block-like constructs:</p>
@@ -317,7 +317,7 @@ there is <em>no</em> line break after the brace if it is followed by <code>else<
 }
 </code></pre>
 
-<h4 id="formatting-empty-blocks">4.1.3 Empty blocks: may be concise</h4>
+<h4 id="formatting-empty-blocks">4.1.3 空ブロック: 簡潔でよい</h4>
 
 <p>An empty block or block-like construct <em>may</em> be closed immediately after it is
 opened, with no characters, space, or line break in between (i.e. <code>{}</code>),
@@ -342,14 +342,14 @@ try {
 } catch (e) {}
 </code></pre>
 
-<h3 id="formatting-block-indentation">4.2 Block indentation: +2 spaces</h3>
+<h3 id="formatting-block-indentation">4.2 ブロックのインデント: +2 スペース</h3>
 
 <p>Each time a new block or block-like construct is opened, the indent increases by
 two spaces. When the block ends, the indent returns to the previous indent
 level. The indent level applies to both code and comments throughout the
 block. (See the example in <a href="#formatting-nonempty-blocks">??</a>).</p>
 
-<h4 id="formatting-array-literals">4.2.1 Array literals: optionally <q>block-like</q></h4>
+<h4 id="formatting-array-literals">4.2.1 配列リテラル: 任意に <q>ブロック風</q> で</h4>
 
 <p>Any array literal may optionally be formatted as if it were a &#8220;block-like
 construct.&#8221; For example, the following are all valid (<strong>not</strong> an exhaustive
@@ -377,7 +377,7 @@ someMethod(foo, [
 between elements, but should not be used only to reduce the vertical size of
 larger arrays.</p>
 
-<h4 id="formatting-object-literals">4.2.2 Object literals: optionally <q>block-like</q></h4>
+<h4 id="formatting-object-literals">4.2.2 オブジェクトリテラル: 任意に <q>ブロック風</q> で</h4>
 
 <p>Any object literal may optionally be formatted as if it were a &#8220;block-like
 construct.&#8221; The same examples apply as <a href="#formatting-array-literals">??</a>. For
@@ -399,7 +399,7 @@ someMethod(foo, {
 }, bar);
 </code></pre>
 
-<h4 id="formatting-class-literals">4.2.3 Class literals</h4>
+<h4 id="formatting-class-literals">4.2.3 クラスリテラル</h4>
 
 <p>Class literals (whether declarations or expressions) are indented as blocks. Do
 not add commas after methods, or a semicolon after the closing brace of a class
@@ -436,7 +436,7 @@ class Frobnicator {
 }
 </code></pre>
 
-<h4 id="formatting-function-expressions">4.2.4 Function expressions</h4>
+<h4 id="formatting-function-expressions">4.2.4 関数</h4>
 
 <p>When declaring an anonymous function in the list of arguments for a function
 call, the body of the function is indented two spaces more than the preceding
@@ -465,7 +465,7 @@ some.reallyLongFunctionCall(arg1, arg2, arg3)
     });
 </code></pre>
 
-<h4 id="formatting-switch-statements">4.2.5 Switch statements</h4>
+<h4 id="formatting-switch-statements">4.2.5 Switch 文</h4>
 
 <p>As with any other block, the contents of a switch block are indented +2.</p>
 
@@ -494,18 +494,18 @@ indentation level, as if a block had been closed.</p>
 }
 </code></pre>
 
-<h3 id="formatting-statements">4.3 Statements</h3>
+<h3 id="formatting-statements">4.3 文</h3>
 
-<h4 id="formatting-one-statement-perline">4.3.1 One statement per line</h4>
+<h4 id="formatting-one-statement-perline">4.3.1 １行には１文まで</h4>
 
 <p>Each statement is followed by a line-break.</p>
 
-<h4 id="formatting-semicolons-are-required">4.3.2 Semicolons are required</h4>
+<h4 id="formatting-semicolons-are-required">4.3.2 セミコロンは必要</h4>
 
 <p>Every statement must be terminated with a semicolon. Relying on automatic
 semicolon insertion is forbidden.</p>
 
-<h3 id="formatting-column-limit">4.4 Column limit: 80</h3>
+<h3 id="formatting-column-limit">4.4 １行の最大文字数: 80</h3>
 
 <p>JavaScript code has a column limit of 80 characters. Except as noted below, any
 line that would exceed this limit must be line-wrapped, as explained in
@@ -520,7 +520,7 @@ in JSDoc or a shell command intended to be copied-and-pasted).</li>
 <a href="#file-goog-require">??</a>).</li>
 </ol>
 
-<h3 id="formatting-line-wrapping">4.5 Line-wrapping</h3>
+<h3 id="formatting-line-wrapping">4.5 改行</h3>
 
 <p><strong>Terminology Note</strong>: <em>Line-wrapping</em> is defined as breaking a single expression
 into multiple lines.</p>
@@ -536,7 +536,7 @@ line-wrapped at the author's discretion.</p>
 <p>Tip: Extracting a method or local variable may solve the problem without the
 need to line-wrap.</p>
 
-<h4 id="formatting-where-to-break">4.5.1 Where to break</h4>
+<h4 id="formatting-where-to-break">4.5.1 どこで折り返すか</h4>
 
 <p>The prime directive of line-wrapping is: prefer to break at a <strong>higher syntactic
 level</strong>. Also:</p>
@@ -575,7 +575,7 @@ code that fits in the smallest number of lines.</p>
 
 <p>See also <a href="#formatting-rectangle-rule">??</a>.</p>
 
-<h4 id="formatting-indent">4.5.2 Indent continuation lines at least +4 spaces</h4>
+<h4 id="formatting-indent">4.5.2 後続行のインデントは少なくとも +4 スペース</h4>
 
 <p>When line-wrapping, each line after the first (each <em>continuation line</em>) is
 indented at least +4 from the original line, unless it falls under the rules of
@@ -589,9 +589,9 @@ if and only if they begin with syntactically parallel elements.</p>
 <p><a href="#formatting-horizontal-alignment">??</a> addresses the discouraged practice of
 using a variable number of spaces to align certain tokens with previous lines.</p>
 
-<h3 id="formatting-whitespace">4.6 Whitespace</h3>
+<h3 id="formatting-whitespace">4.6 空白</h3>
 
-<h4 id="formatting-vertical-whitespace">4.6.1 Vertical whitespace</h4>
+<h4 id="formatting-vertical-whitespace">4.6.1 垂直方向の空白</h4>
 
 <p>A single blank line appears:</p>
 
@@ -613,7 +613,7 @@ literal (neither encouraged nor discouraged).</li>
 <p><em>Multiple</em> consecutive blank lines are permitted, but never required (nor
 encouraged).</p>
 
-<h4 id="formatting-horizontal-whitespace">4.6.2 Horizontal whitespace</h4>
+<h4 id="formatting-horizontal-whitespace">4.6.2 水平方向の空白</h4>
 
 <p>Use of horizontal whitespace depends on location, and falls into three broad
 categories: <em>leading</em> (at the start of a line), <em>trailing</em> (at the end of a
@@ -647,7 +647,7 @@ comment. Here, multiple spaces are allowed, but not required.</li>
 {number} */ (bar);</code> or <code>function(/** string */ foo) {</code>).</li>
 </ol>
 
-<h4 id="formatting-rectangle-rule">4.6.3 Rectangle Rule</h4>
+<h4 id="formatting-rectangle-rule">4.6.3 矩形化規則</h4>
 
 <p>All code should follow the Rectangle Rule.</p>
 
@@ -683,7 +683,7 @@ exposing program structure in the physical layout; the RHS is in just one place,
 not partly in one place and partly another.
 </p>
 
-<h4 id="formatting-horizontal-alignment">4.6.4 Horizontal alignment: discouraged</h4>
+<h4 id="formatting-horizontal-alignment">4.6.4 水平方向の位置揃え: 嫌々ながら</h4>
 
 <p><strong>Terminology Note</strong>: <em>Horizontal alignment</em> is the practice of adding a
 variable number of additional spaces in your code with the goal of making
@@ -716,7 +716,7 @@ reformattings. That one-line change now has a <q>blast radius.</q> This can at w
 result in pointless busywork, but at best it still corrupts version history
 information, slows down reviewers and exacerbates merge conflicts.</p>
 
-<h4 id="formatting-function-arguments">4.6.5 Function arguments</h4>
+<h4 id="formatting-function-arguments">4.6.5 関数の引数</h4>
 
 <p>Prefer to put all function arguments on the same line as the function name. If doing so would exceed the 80-column limit, the arguments must be line-wrapped in a readable way. To save space, you may wrap as close to 80 as possible, or put each argument on its own line to enhance readability. Indentation should be four spaces. Aligning to the parenthesis is allowed, but discouraged. Below are the most common patterns for argument wrapping:</p>
 
@@ -747,7 +747,7 @@ doSomething(
 }
 </code></pre>
 
-<h3 id="formatting-grouping-parentheses">4.7 Grouping parentheses: recommended</h3>
+<h3 id="formatting-grouping-parentheses">4.7 括弧によるグループ化: 推奨</h3>
 
 <p>Optional grouping parentheses are omitted only when the author and reviewer
 agree that there is no reasonable chance that the code will be misinterpreted
@@ -760,12 +760,12 @@ memorized.</p>
 
 <p>Parentheses are required for type casts: <code>/** @type {!Foo} */ (foo)</code>.</p>
 
-<h3 id="formatting-comments">4.8 Comments</h3>
+<h3 id="formatting-comments">4.8 コメント</h3>
 
 <p>This section addresses <em>implementation comments</em>. JSDoc is addressed separately
 in <a href="#jsdoc">??</a>.</p>
 
-<h4 id="formatting-block-comment-style">4.8.1 Block comment style</h4>
+<h4 id="formatting-block-comment-style">4.8.1 ブロックコメントのスタイル</h4>
 
 <p>Block comments are indented at the same level as the surrounding code. They may
 be in <code>/* &#8230; */</code> or <code>//</code>-style. For multi-line <code>/* &#8230; */</code> comments, subsequent
@@ -809,32 +809,32 @@ TODO(b/6002235): remove the "Last visitors" feature
 
 <p></p>
 
-<h2 id="language-features">5 Language features</h2>
+<h2 id="language-features">5 言語機能</h2>
 
 <p>JavaScript includes many dubious (and even dangerous) features.  This section
 delineates which features may or may not be used, and any additional constraints
 on their use.</p>
 
-<h3 id="features-local-variable-declarations">5.1 Local variable declarations</h3>
+<h3 id="features-local-variable-declarations">5.1 ローカル変数の宣言</h3>
 
-<h4 id="features-use-const-and-let">5.1.1 Use <code>const</code> and <code>let</code></h4>
+<h4 id="features-use-const-and-let">5.1.1 <code>const</code>と<code>let</code>を使う</h4>
 
 <p>Declare all local variables with either <code>const</code> or <code>let</code>. Use const by default,
 unless a variable needs to be reassigned. The <code class="badcode">var</code>
 keyword must not be used.</p>
 
-<h4 id="features-one-variable-per-declaration">5.1.2 One variable per declaration</h4>
+<h4 id="features-one-variable-per-declaration">5.1.2 変数ごとの宣言</h4>
 
 <p>Every local variable declaration declares only one variable: declarations such
 as <code class="badcode">let a = 1, b = 2;</code> are not used.</p>
 
-<h4 id="features-declared-when-needed">5.1.3 Declared when needed, initialized as soon as possible</h4>
+<h4 id="features-declared-when-needed">5.1.3 必要になったら宣言し、出来るだけ早く初期化する</h4>
 
 <p>Local variables are <strong>not</strong> habitually declared at the start of their containing
 block or block-like construct. Instead, local variables are declared close to
 the point they are first used (within reason), to minimize their scope.</p>
 
-<h4 id="features-declare-types-as-needed">5.1.4 Declare types as needed</h4>
+<h4 id="features-declare-types-as-needed">5.1.4 必要に応じて型を宣言する</h4>
 
 <p>JSDoc type annotations may be added either on the line above the declaration, or
 else inline before the variable name.</p>
@@ -854,9 +854,9 @@ or constructor call does not include any values of the template parameter type
 in a closure.  Local variable type annotations are particularly helpful in these
 cases since otherwise the compiler will infer the template parameter as unknown.</p>
 
-<h3 id="features-array-literals">5.2 Array literals</h3>
+<h3 id="features-array-literals">5.2 配列リテラル</h3>
 
-<h4 id="features-arrays-trailing-comma">5.2.1 Use trailing commas</h4>
+<h4 id="features-arrays-trailing-comma">5.2.1 項目末尾のカンマを使う</h4>
 
 
 
@@ -871,7 +871,7 @@ element and the closing bracket.</p>
 ];
 </code></pre>
 
-<h4 id="features-arrays-ctor">5.2.2 Do not use the variadic <code>Array</code> constructor</h4>
+<h4 id="features-arrays-ctor">5.2.2 可変長引数を持つ <code>Array</code> コンストラクタは使用しない</h4>
 
 <p>The constructor is error-prone if arguments are added or removed. Use a literal
 instead.</p>
@@ -900,12 +900,12 @@ const a4 = [];
 <p>Explicitly allocating an array of a given length using <code>new Array(length)</code> is
 allowed when appropriate.</p>
 
-<h4 id="features-arrays-non-numeric-properties">5.2.3 Non-numeric properties</h4>
+<h4 id="features-arrays-non-numeric-properties">5.2.3 数値でないプロパティ</h4>
 
 <p>Do not define or use non-numeric properties on an array (other than
 <code>length</code>). Use a <code>Map</code> (or <code>Object</code>) instead.</p>
 
-<h4 id="features-arrays-destructuring">5.2.4 Destructuring</h4>
+<h4 id="features-arrays-destructuring">5.2.4 分割代入</h4>
 
 <p>Array literals may be used on the left-hand side of an assignment to perform
 destructuring (such as when unpacking multiple values from a single array or
@@ -934,7 +934,7 @@ function optionalDestructuring([a = 4, b = 2] = []) { &#8230; };
 prefer object destructuring to array destructuring when possible, as it allows
 naming the individual elements and specifying a different type for each.*</p>
 
-<h4 id="features-arrays-spread-operator">5.2.5 Spread operator</h4>
+<h4 id="features-arrays-spread-operator">5.2.5 スプレッド演算子</h4>
 
 <p>Array literals may include the spread operator (<code>...</code>) to flatten elements out
 of one or more other iterables.  The spread operator should be used instead of
@@ -947,20 +947,20 @@ more awkward constructs with <code>Array.prototype</code>.  There is no space af
 [...foo, ...bar]   // preferred over foo.concat(bar)
 </code></pre>
 
-<h3 id="features-object-literals">5.3 Object literals</h3>
+<h3 id="features-object-literals">5.3 オブジェクトリテラル</h3>
 
-<h4 id="features-objects-use-trailing-comma">5.3.1 Use trailing commas</h4>
+<h4 id="features-objects-use-trailing-comma">5.3.1 項目末尾のカンマを使う</h4>
 
 <p>Include a trailing comma whenever there is a line break between the final
 property and the closing brace.</p>
 
-<h4 id="features-objects-ctor">5.3.2 Do not use the <code>Object</code> constructor</h4>
+<h4 id="features-objects-ctor">5.3.2 <code>Object</code> コンストラクタは使用しない</h4>
 
 <p>While <code>Object</code> does not have the same problems as <code>Array</code>, it is still
 disallowed for consistency. Use an object literal (<code>{}</code> or <code>{a: 0, b: 1, c: 2}</code>)
 instead.</p>
 
-<h4 id="features-objects-mixing-keys">5.3.3 Do not mix quoted and unquoted keys</h4>
+<h4 id="features-objects-mixing-keys">5.3.3 クォートされたキーとされていないキーを混在させない</h4>
 
 <p>Object literals may represent either <em>structs</em> (with unquoted keys and/or
 symbols) or <em>dicts</em> (with quoted and/or computed keys). Do not mix these key
@@ -974,7 +974,7 @@ types in a single object literal.</p>
 }
 </code></pre>
 
-<h4 id="features-objects-computed-property-names">5.3.4 Computed property names</h4>
+<h4 id="features-objects-computed-property-names">5.3.4 計算されたプロパティ名</h4>
 
 <p>Computed property names (e.g., <code>{['key' + foo()]: 42}</code>) are allowed, and are
 considered dict-style (quoted) keys (i.e., must not be mixed with non-quoted
@@ -982,7 +982,7 @@ keys) unless the computed property is a symbol (e.g., <code>[Symbol.iterator]</c
 Enum values may also be used for computed keys, but should not be mixed with
 non-enum keys in the same literal.</p>
 
-<h4 id="features-objects-method-shorthand">5.3.5 Method shorthand</h4>
+<h4 id="features-objects-method-shorthand">5.3.5 メソッドの簡略構文</h4>
 
 <p>Methods can be defined on object literals using the method shorthand (<code>{method()
 {&#8230; }}</code>) in place of a colon immediately followed by a <code>function</code> or arrow
@@ -1015,7 +1015,7 @@ the object literal.</p>
 }
 </code></pre>
 
-<h4 id="features-objects-shorthand-properties">5.3.6 Shorthand properties</h4>
+<h4 id="features-objects-shorthand-properties">5.3.6 プロパティの簡略構文</h4>
 
 <p>Shorthand properties are allowed on object literals.</p>
 
@@ -1031,7 +1031,7 @@ const obj = {
 assertEquals(3, obj.method());
 </code></pre>
 
-<h4 id="features-objects-destructuring">5.3.7 Destructuring</h4>
+<h4 id="features-objects-destructuring">5.3.7 分割代入</h4>
 
 <p>Object destructuring patterns may be used on the left-hand side of an assignment
 to perform destructuring and unpack multiple values from a single object.</p>
@@ -1072,7 +1072,7 @@ function nontrivialDefault({a, b} = {a: 2, b: 4}) {};
 must not be wrapped: the entire statement occupies one line, regardless of how
 long it is (see <a href="#file-goog-require">??</a>).</p>
 
-<h4 id="features-objects-enums">5.3.8 Enums</h4>
+<h4 id="features-objects-enums">5.3.8 列挙</h4>
 
 <p>Enumerations are defined by adding the <code>@enum</code> annotation to an object literal.
 Additional properties may not be added to an enum after it is defined.  Enums
@@ -1099,16 +1099,16 @@ const Option = {
 };
 </code></pre>
 
-<h3 id="features-classes">5.4 Classes</h3>
+<h3 id="features-classes">5.4 クラス</h3>
 
-<h4 id="features-classes-constructors">5.4.1 Constructors</h4>
+<h4 id="features-classes-constructors">5.4.1 コンストラクタ</h4>
 
 <p>Constructors are optional for concrete classes, and when present must be the
 first method defined in the class literal. Subclass constructors must call
 <code>super()</code> before setting any fields or otherwise accessing <code>this</code>.  Interfaces
 must not define a constructor.</p>
 
-<h4 id="features-classes-fields">5.4.2 Fields</h4>
+<h4 id="features-classes-fields">5.4.2 フィールド</h4>
 
 <p>Set all of a concrete object&#8217;s fields (i.e. all properties other than methods)
 in the constructor. Annotate fields that are never reassigned with <code>@const</code>
@@ -1133,7 +1133,7 @@ set to <code>undefined</code> in the constructor to prevent later shape changes.
 <code>@struct</code> to an object will check that undeclared properties are not
 added/accessed.  Classes have this added by default.</p>
 
-<h4 id="features-classes-computed-properties">5.4.3 Computed properties</h4>
+<h4 id="features-classes-computed-properties">5.4.3 計算されたプロパティ</h4>
 
 
 
@@ -1145,7 +1145,7 @@ iterable.  Beyond this, <code>Symbol</code> should be used sparingly.</p>
 
 <p>Tip: be careful of using any other built-in symbols (e.g., <code>Symbol.isConcatSpreadable</code>) as they are not polyfilled by the compiler and will therefore not work in older browsers.</p>
 
-<h4 id="features-classes-static-methods">5.4.4 Static methods</h4>
+<h4 id="features-classes-static-methods">5.4.4 静的メソッド</h4>
 
 
 
@@ -1166,11 +1166,11 @@ function callFoo(cls) { cls.foo(); }  // discouraged: don't call static methods 
 Sub.foo();  // illegal: don't call static methods on subclasses that don't define it themselves
 </code></pre>
 
-<h4 id="features-classes-old-style">5.4.5 Old-style class declarations</h4>
+<h4 id="features-classes-old-style">5.4.5 古いスタイルのクラス宣言</h4>
 
 <p>Old-style class declarations (either using a <code>/** @constructor */</code>-annotated function, or else <code>goog.defineClass</code>) are <em>not</em> allowed.</p>
 
-<h4 id="features-classes-prototypes">5.4.6 Do not manipulate <code>prototype</code>s directly</h4>
+<h4 id="features-classes-prototypes">5.4.6 直接 <code>prototype</code> を操作しない</h4>
 
 <p>The <code>class</code> keyword allows clearer and more readable class definitions than
 defining <code>prototype</code> properties. Ordinary implementation code has no business
@@ -1181,7 +1181,7 @@ explicitly forbidden.</p>
 <p><strong>Exception</strong>: Framework code (such as Polymer, or Angular) may need to use <code>prototype</code>s, and should not
 resort to even-worse workarounds to avoid doing so.</p>
 
-<h4 id="features-classes-getters-and-setters">5.4.7 Getters and Setters</h4>
+<h4 id="features-classes-getters-and-setters">5.4.7 ゲッタとセッタ</h4>
 
 <p>Do not use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">JavaScript getter and setter properties</a>.  They are potentially
 surprising and difficult to reason about, and have limited support in the
@@ -1202,7 +1202,7 @@ is not possible, with <code>Object.defineProperties</code>.  Do not use
 }
 </code></pre>
 
-<h4 id="features-classes-overriding-tostring">5.4.8 Overriding toString</h4>
+<h4 id="features-classes-overriding-tostring">5.4.8 toString のオーバーライド</h4>
 
 <p>The <code>toString</code> method may be overridden, but must always succeed and never have
 visible side effects.</p>
@@ -1210,7 +1210,7 @@ visible side effects.</p>
 <p>Tip: Beware, in particular, of calling other methods from toString, since
 exceptional conditions could lead to infinite loops.</p>
 
-<h4 id="features-classes-interfaces">5.4.9 Interfaces</h4>
+<h4 id="features-classes-interfaces">5.4.9 インターフェース</h4>
 
 <p>Interfaces may be declared with <code>@interface</code> or <code>@record</code>. Interfaces declared
 with <code>@record</code> can be explicitly (i.e. via <code>@implements</code>) or implicitly
@@ -1238,9 +1238,9 @@ class Frobnicator {
 Frobnicator.prototype.attempts;
 </code></pre>
 
-<h3 id="features-functions">5.5 Functions</h3>
+<h3 id="features-functions">5.5 関数</h3>
 
-<h4 id="features-functions-top-level-functions">5.5.1 Top-level functions</h4>
+<h4 id="features-functions-top-level-functions">5.5.1 最上位レベルの関数</h4>
 
 <p>Exported functions may be defined directly on the <code>exports</code> object, or else
 declared locally and exported separately.  Non-exported functions are encouraged
@@ -1273,12 +1273,12 @@ exports.foo = (arg) =&gt; {
 };
 </code></pre>
 
-<h4 id="features-functions-nested-functions">5.5.2 Nested functions and closures</h4>
+<h4 id="features-functions-nested-functions">5.5.2 ネストされた関数とクロージャ</h4>
 
 <p>Functions may contain nested function definitions.  If it is useful to give the
 function a name, it should be assigned to a local <code>const</code>.</p>
 
-<h4 id="features-functions-arrow-functions">5.5.3 Arrow functions</h4>
+<h4 id="features-functions-arrow-functions">5.5.3 アロー関数</h4>
 
 <p>Arrow functions provide a concise syntax and fix a number of difficulties with
 <code>this</code>.  Prefer arrow functions over the <code>function</code> keyword, particularly for
@@ -1297,7 +1297,7 @@ non-destructured argument.</p>
 since the code may still parse reasonably (but incorrectly) if the parentheses
 are forgotten when an additional argument is added.</p>
 
-<h4 id="features-functions-generators">5.5.4 Generators</h4>
+<h4 id="features-functions-generators">5.5.4 ジェネレータ</h4>
 
 <p>Generators enable a number of useful abstractions and may be used as needed.</p>
 
@@ -1325,7 +1325,7 @@ class SomeClass {
 }
 </code></pre>
 
-<h4 id="features-functions-parameters">5.5.5 Parameters</h4>
+<h4 id="features-functions-parameters">5.5.5 パラメータ</h4>
 
 <p>Function parameters must be typed with JSDoc annotations in the JSDoc preceding
 the function&#8217;s definition, except in the case of same-signature <code>@override</code>s,
@@ -1343,7 +1343,7 @@ annotations must be specified on the field, variable, or method.</p>
 <pre><code class="language-js prettyprint badcode">const func = (/** number */ foo) =&gt; 2 * foo;  // use ordinary @param instead
 </code></pre>
 
-<h5 id="features-functions-default-parameters">5.5.5.1 Default parameters</h5>
+<h5 id="features-functions-default-parameters">5.5.5.1 デフォルトパラメータ</h5>
 
 <p>Optional parameters are permitted using the equals operator in the parameter
 list. Optional parameters must include spaces on both sides of the equals
@@ -1378,7 +1378,7 @@ initializers, these should be kept as simple as possible. Avoid initializers
 that expose shared mutable state, as that can easily introduce unintended
 coupling between function calls.</p>
 
-<h5 id="features-functions-rest-parameters">5.5.5.2 Rest parameters</h5>
+<h5 id="features-functions-rest-parameters">5.5.5.2 rest パラメータ</h5>
 
 <p>Use a <em>rest</em> parameter instead of accessing <code>arguments</code>. Rest parameters are
 typed with a <code>...</code> prefix in their JSDoc. The rest parameter must be the last
@@ -1395,18 +1395,18 @@ parameter <code>arguments</code>, which confusingly shadows the built-in name.</
 function variadic(array, ...numbers) {}
 </code></pre>
 
-<h4 id="features-functions-returns">5.5.6 Returns</h4>
+<h4 id="features-functions-returns">5.5.6 戻り値</h4>
 
 <p>Function return types must be specified in the JSDoc directly above the function
 definition, except in the case of same-signature <code>@override</code>s where all types
 are omitted.</p>
 
-<h4 id="features-functions-generics">5.5.7 Generics</h4>
+<h4 id="features-functions-generics">5.5.7 ジェネリクス</h4>
 
 <p>Declare generic functions and methods when necessary with <code>@template TYPE</code> in
 the JSDoc above the class definition.</p>
 
-<h4 id="features-functions-spread-operator">5.5.8 Spread operator</h4>
+<h4 id="features-functions-spread-operator">5.5.8 スプレッド演算子</h4>
 
 <p>Function calls may use the spread operator (<code>...</code>).  Prefer the spread operator
 to <code>Function.prototype.apply</code> when an array or iterable is unpacked into
@@ -1418,9 +1418,9 @@ multiple parameters of a variadic function.  There is no space after the <code>.
 myFunction(...array, ...iterable, ...generator());
 </code></pre>
 
-<h3 id="features-string-literals">5.6 String literals</h3>
+<h3 id="features-string-literals">5.6 文字列リテラル</h3>
 
-<h4 id="features-strings-use-single-quotes">5.6.1 Use single quotes</h4>
+<h4 id="features-strings-use-single-quotes">5.6.1 シングルクォートを使う</h4>
 
 <p>Ordinary string literals are delimited with single quotes (<code>'</code>), rather than
 double quotes (<code>"</code>).</p>
@@ -1430,7 +1430,7 @@ string to avoid having to escape the quote.</p>
 
 <p>Ordinary string literals may not span multiple lines.</p>
 
-<h4 id="features-strings-template-strings">5.6.2 Template strings</h4>
+<h4 id="features-strings-template-strings">5.6.2 テンプレート文字列</h4>
 
 <p>Use template strings (delimited with <code>`</code>) over complex string
 concatenation, particularly if multiple string literals are involved. Template
@@ -1451,7 +1451,7 @@ ${a} / ${b} = ${a / b}`;
 }
 </code></pre>
 
-<h4 id="features-strings-no-line-continuations">5.6.3 No line continuations</h4>
+<h4 id="features-strings-no-line-continuations">5.6.3 複数行にわたる文字列は禁止</h4>
 
 <p>Do not use <em>line continuations</em> (that is, ending a line inside a string literal
 with a backslash) in either ordinary or template string literals. Even though
@@ -1472,16 +1472,16 @@ after the slash, and is less obvious to readers.</p>
     'the concatenated strings are cleaner.';
 </code></pre>
 
-<h3 id="features-number-literals">5.7 Number literals</h3>
+<h3 id="features-number-literals">5.7 数値リテラル</h3>
 
 <p>Numbers may be specified in decimal, hex, octal, or binary.  Use exactly <code>0x</code>,
 <code>0o</code>, and <code>0b</code> prefixes, with lowercase letters, for hex, octal, and binary,
 respectively.  Never include a leading zero unless it is immediately followed by
 <code>x</code>, <code>o</code>, or <code>b</code>.</p>
 
-<h3 id="features-control-structures">5.8 Control structures</h3>
+<h3 id="features-control-structures">5.8 制御構造</h3>
 
-<h4 id="features-for-loops">5.8.1 For loops</h4>
+<h4 id="features-for-loops">5.8.1 For ループ</h4>
 
 <p>With ES6, the language now has three different kinds of <code>for</code> loops.  All may be
 used, though <code>for</code>-<code>of</code> loops should be preferred when possible.</p>
@@ -1492,7 +1492,7 @@ array.  <code>Object.prototype.hasOwnProperty</code> should be used in <code>for
 exclude unwanted prototype properties.  Prefer <code>for</code>-<code>of</code> and <code>Object.keys</code> over
 <code>for</code>-<code>in</code> when possible.</p>
 
-<h4 id="features-exceptions">5.8.2 Exceptions</h4>
+<h4 id="features-exceptions">5.8.2 例外</h4>
 
 <p>Exceptions are an important part of the language and should be used whenever
 exceptional cases occur.  Always throw <code>Error</code>s or subclasses of <code>Error</code>: never
@@ -1507,7 +1507,7 @@ type is insufficient.</p>
 passing an error container reference type, or returning an object with an error
 property).</p>
 
-<h5 id="features-empty-catch-blocks">5.8.2.1 Empty catch blocks</h5>
+<h5 id="features-empty-catch-blocks">5.8.2.1 空の catch ブロック</h5>
 
 <p>It is very rarely correct to do nothing in response to a caught exception. When
 it truly is appropriate to take no action whatsoever in a catch block, the
@@ -1533,11 +1533,11 @@ return handleTextResponse(response);
 <p>Tip: Unlike in some other languages, patterns like the above simply don&#8217;t work
 since this will catch the error thrown by <code>fail</code>. Use <code>assertThrows()</code> instead.</p>
 
-<h4 id="features-switch-statements">5.8.3 Switch statements</h4>
+<h4 id="features-switch-statements">5.8.3 switch 文</h4>
 
 <p>Terminology Note: Inside the braces of a switch block are one or more statement groups. Each statement group consists of one or more switch labels (either <code>case FOO:</code> or <code>default:</code>), followed by one or more statements.</p>
 
-<h5 id="features-switch-fall-through">5.8.3.1 Fall-through: commented</h5>
+<h5 id="features-switch-fall-through">5.8.3.1 フォール・スルー: コメントで示すこと</h5>
 
 <p>Within a switch block, each statement group either terminates abruptly (with a
 <code>break</code>, <code>return</code> or <code>throw</code>n exception), or is marked with a comment to
@@ -1561,7 +1561,7 @@ statement group of the switch block.</p>
 }
 </code></pre>
 
-<h5 id="features-switch-default-case">5.8.3.2 The <code>default</code> case is present</h5>
+<h5 id="features-switch-default-case">5.8.3.2 <code>default</code> ケースを持たせる</h5>
 
 <p>Each switch statement includes a <code>default</code> statement group, even if it contains
 no code.</p>
@@ -1575,25 +1575,25 @@ explicit <code>@this</code> declared in the immediately-enclosing function&#8217
 <p>Never use <code>this</code> to refer to the global object, the context of an <code>eval</code>, the
 target of an event, or unnecessarily <code>call()</code>ed or <code>apply()</code>ed functions.</p>
 
-<h3 id="disallowed-features">5.10 Disallowed features</h3>
+<h3 id="disallowed-features">5.10 許可されていない機能</h3>
 
 <h4 id="disallowed-features-with">5.10.1 with</h4>
 
 <p>Do not use the <code>with</code> keyword.  It makes your code harder to understand and has
 been banned in strict mode since ES5.</p>
 
-<h4 id="disallowed-features-dynamic-code-evaluation">5.10.2 Dynamic code evaluation</h4>
+<h4 id="disallowed-features-dynamic-code-evaluation">5.10.2 動的なコードの評価</h4>
 
 <p>Do not use <code>eval</code> or the <code>Function(...string)</code> constructor (except for code
 loaders).  These features are potentially dangerous and simply do not work in
 CSP environments.</p>
 
-<h4 id="disallowed-features-automatic-semicolon-insertion">5.10.3 Automatic semicolon insertion</h4>
+<h4 id="disallowed-features-automatic-semicolon-insertion">5.10.3 セミコロンの自動挿入</h4>
 
 <p>Always terminate statements with semicolons (except function and class
 declarations, as noted above).</p>
 
-<h4 id="disallowed-features-non-standard-features">5.10.4 Non-standard features</h4>
+<h4 id="disallowed-features-non-standard-features">5.10.4 非標準の機能</h4>
 
 <p>Do not use non-standard features.  This includes old features that have been
 removed (e.g., <code>WeakMap.clear</code>), new features that are not yet standardized
@@ -1605,7 +1605,7 @@ Chrome extensions or Node.js, can obviously use those APIs).  Non-standard
 language &#8220;extensions&#8221; (such as those provided by some external transpilers) are
 forbidden.</p>
 
-<h4 id="disallowed-features-wrapper-objects">5.10.5 Wrapper objects for primitive types</h4>
+<h4 id="disallowed-features-wrapper-objects">5.10.5 プリミティブ型のラッパーオブジェクト</h4>
 
 <p>Never use <code>new</code> on the primitive object wrappers (<code>Boolean</code>, <code>Number</code>, <code>String</code>,
 <code>Symbol</code>), nor include them in type annotations.</p>
@@ -1625,7 +1625,7 @@ using <code>+</code> or concatenating the empty string) or creating symbols.</p>
 if (!x) alert(typeof x);  // alerts 'boolean', as expected
 </code></pre>
 
-<h4 id="disallowed-features-modifying-builtin-objects">5.10.6 Modifying builtin objects</h4>
+<h4 id="disallowed-features-modifying-builtin-objects">5.10.6 組み込みオブジェクトの改変</h4>
 
 <p>Never modify builtin types, either by adding methods to their constructors or to
 their prototypes.  Avoid depending on libraries that do this.  Note that the
@@ -1635,9 +1635,9 @@ possible; nothing else may modify builtin objects.</p>
 <p>Do not add symbols to the global object unless absolutely necessary
 (e.g. required by a third-party API).</p>
 
-<h2 id="naming">6 Naming</h2>
+<h2 id="naming">6 命名規則</h2>
 
-<h3 id="naming-rules-common-to-all-identifiers">6.1 Rules common to all identifiers</h3>
+<h3 id="naming-rules-common-to-all-identifiers">6.1 共通規則</h3>
 
 <p>Identifiers use only ASCII letters and digits, and, in a small number of cases
 noted below, underscores and very rarely (when required by frameworks like
@@ -1665,14 +1665,14 @@ cstmrId               // Deletes internal letters.
 kSecondsPerDay        // Do not use Hungarian notation.
 </code></pre>
 
-<h3 id="naming-rules-by-identifier-type">6.2 Rules by identifier type</h3>
+<h3 id="naming-rules-by-identifier-type">6.2 タイプごとの規則</h3>
 
-<h4 id="naming-package-names">6.2.1 Package names</h4>
+<h4 id="naming-package-names">6.2.1 パッケージ名</h4>
 
 <p>Package names are all <code>lowerCamelCase</code>. For example,
 <code>my.exampleCode.deepSpace</code>, but not <code class="badcode">my.examplecode.deepspace</code> or <code class="badcode">my.example_code.deep_space</code>.</p>
 
-<h5 id="naming-hierarchy">6.2.1.1 Hierarchy</h5>
+<h5 id="naming-hierarchy">6.2.1.1 階層</h5>
 
 <p>Module namespaces may never be named as a <em>direct</em> child of another namespace.</p>
 
@@ -1711,7 +1711,7 @@ goog.exportSymbol('foo.hats.BowlerHat', BowlerHat);  // export external name
 
 <p></p>
 
-<h4 id="naming-class-names">6.2.2 Class names</h4>
+<h4 id="naming-class-names">6.2.2 クラス名</h4>
 
 <p>Class, interface, record, and typedef names are written in <code>UpperCamelCase</code>.
 Unexported classes are simply locals: they are not marked <code>@private</code> and
@@ -1721,7 +1721,7 @@ therefore are not named with a trailing underscore.</p>
 <code>ImmutableList</code>, or <code>VisibilityMode</code>.  Additionally, interface names may
 sometimes be adjectives or adjective phrases instead (for example, <code>Readable</code>).</p>
 
-<h4 id="naming-method-names">6.2.3 Method names</h4>
+<h4 id="naming-method-names">6.2.3 メソッド名</h4>
 
 <p>Method names are written in <code>lowerCamelCase</code>.  Private methods&#8217; names must end
 with a trailing underscore.</p>
@@ -1736,20 +1736,20 @@ components of the name. One typical pattern is <code>test&lt;MethodUnderTest&gt;
 for example <code>testPop_emptyStack</code>. There is no One Correct Way to name test
 methods.</p>
 
-<h4 id="naming-enum-names">6.2.4 Enum names</h4>
+<h4 id="naming-enum-names">6.2.4 列挙名</h4>
 
 <p>Enum names are written in <code>UpperCamelCase</code>, similar to classes, and should
 generally be singular nouns.  Individual items within the enum are named in
 <code>CONSTANT_CASE</code>.</p>
 
-<h4 id="naming-constant-names">6.2.5 Constant names</h4>
+<h4 id="naming-constant-names">6.2.5 定数名</h4>
 
 <p>Constant names use <code>CONSTANT_CASE</code>: all uppercase letters, with words separated
 by underscores. There is no reason for a constant to be named with a trailing
 underscore, since private static properties can be replaced by (implicitly
 private) module locals.</p>
 
-<h5 id="naming-definition-of-constant">6.2.5.1 Definition of &#8220;constant&#8221;</h5>
+<h5 id="naming-definition-of-constant">6.2.5.1 &#8220;定数&#8221; の定義</h5>
 
 <p>Every constant is a <code>@const</code> static property or a module-local <code>const</code>
 declaration, but not all <code>@const</code> static properties and module-local <code>const</code>s
@@ -1777,7 +1777,7 @@ const logger = log.getLogger('loggers.are.not.immutable');
 
 <p>Constants&#8217; names are typically nouns or noun phrases.</p>
 
-<h5 id="naming-local-aliases">6.2.5.1 Local aliases</h5>
+<h5 id="naming-local-aliases">6.2.5.1 ローカルな別名</h5>
 
 <p>Local aliases should be used whenever they improve readability over
 fully-qualified names.  Follow the same rules as <code>goog.require</code>s
@@ -1791,7 +1791,7 @@ const CONSTANT_NAME = ImportedClass.CONSTANT_NAME;
 const {assert, assertInstanceof} = asserts;
 </code></pre>
 
-<h4 id="naming-non-constant-field-names">6.2.6 Non-constant field names</h4>
+<h4 id="naming-non-constant-field-names">6.2.6 定数でないフィールド名</h4>
 
 <p>Non-constant field names (static or otherwise) are written in <code>lowerCamelCase</code>,
 with a trailing underscore for private fields.</p>
@@ -1799,7 +1799,7 @@ with a trailing underscore for private fields.</p>
 <p>These names are typically nouns or noun phrases. For example, <code>computedValues</code>
 or <code>index_</code>.</p>
 
-<h4 id="naming-parameter-names">6.2.7 Parameter names</h4>
+<h4 id="naming-parameter-names">6.2.7 パラメータ名</h4>
 
 <p>Parameter names are written in <code>lowerCamelCase</code>.  Note that this applies even if
 the parameter expects a constructor.</p>
@@ -1810,19 +1810,20 @@ the parameter expects a constructor.</p>
 begin with a <code>$</code>.  This exception does not apply to any other identifiers
 (e.g. local variables or properties).</p>
 
-<h4 id="naming-local-variable-names">6.2.8 Local variable names</h4>
+<h4 id="naming-local-variable-names">6.2.8 ローカル変数名</h4>
 
 <p>Local variable names are written in <code>lowerCamelCase</code>, except for module-local
 (top-level) constants, as described above.  Constants in function scopes are
 still named in <code>lowerCamelCase</code>.  Note that lowerCamelCase applies even if the
 variable holds a constructor.</p>
 
-<h4 id="naming-template-parameter-names">6.2.9 Template parameter names</h4>
+<h4 id="naming-template-parameter-names">6.2.9 テンプレートパラメータ名</h4>
+
 
 <p>Template parameter names should be concise, single-word or single-letter
 identifiers, and must be all-caps, such as <code>TYPE</code> or <code>THIS</code>.</p>
 
-<h3 id="naming-camel-case-defined">6.3 Camel case: defined</h3>
+<h3 id="naming-camel-case-defined">6.3 キャメルケース: 定義</h3>
 
 <p>Sometimes there is more than one reasonable way to convert an English phrase
 into camel case, such as when acronyms or unusual constructs like <q>IPv6</q> or
@@ -1902,7 +1903,7 @@ character of:
 
 <p><a href="https://developers.google.com/closure/compiler/docs/js-for-compiler">JSDoc</a> is used on all classes, fields, and methods.</p>
 
-<h3 id="jsdoc-general-form">7.1 General form</h3>
+<h3 id="jsdoc-general-form">7.1 基本的な形式</h3>
 
 <p>The basic formatting of JSDoc blocks is as seen in this example:</p>
 
@@ -1956,7 +1957,7 @@ ignore plain text formatting, so if you did this:</p>
  */
 </code></pre>
 
-<h3 id="jsdoc-tags">7.3 JSDoc tags</h3>
+<h3 id="jsdoc-tags">7.3 JSDoc タグ</h3>
 
 <p>Google style allows a subset of JSDoc tags.  See
 <a href="#appendices-jsdoc-tag-reference">??</a> for the complete list.  Most tags must
@@ -2002,7 +2003,7 @@ consistent.</p>
 <a href="https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler">Annotating JavaScript for the Closure Compiler</a> and <a href="https://github.com/google/closure-compiler/wiki/Types-in-the-Closure-Type-System">Types in the Closure Type
 System</a>.</p>
 
-<h3 id="jsdoc-line-wrapping">7.4 Line wrapping</h3>
+<h3 id="jsdoc-line-wrapping">7.4 行の折り返し</h3>
 
 <p>Line-wrapped block tags are indented four spaces.  Wrapped description text may
 be lined up with the description on previous lines, but this horizontal
@@ -2022,7 +2023,7 @@ exports.method = function(foo) {
 
 <p>Do not indent when wrapping a <code>@fileoverview</code> description.</p>
 
-<h3 id="jsdoc-top-file-level-comments">7.5 Top/file-level comments</h3>
+<h3 id="jsdoc-top-file-level-comments">7.5 トップもしくはファイルレベルのコメント</h3>
 
 <p>A file may have a top-level file overview. A copyright notice , author information, and
 default <a href="#visibility-annotations">visibility level</a> are optional.  File overviews are generally recommended whenever a
@@ -2040,7 +2041,7 @@ dependencies or compatibility information. Wrapped lines are not indented.</p>
  */
 </code></pre>
 
-<h3 id="jsdoc-class-comments">7.6 Class comments</h3>
+<h3 id="jsdoc-class-comments">7.6 クラスのコメント</h3>
 
 <p>Classes, interfaces and records must be documented with a description and any
 template parameters, implemented interfaces, visibility, or other appropriate
@@ -2077,7 +2078,7 @@ class Listable {
 }
 </code></pre>
 
-<h3 id="jsdoc-enum-and-typedef-comments">7.7 Enum and typedef comments</h3>
+<h3 id="jsdoc-enum-and-typedef-comments">7.7 列挙と型定義のコメント</h3>
 
 <p>Enums and typedefs must be documented.  Public enums and typedefs must have a
 non-empty description.  Individual enum items may be documented with a JSDoc
@@ -2108,7 +2109,7 @@ number, bar: string}}</code>) since it does not allow documenting individual fie
 nor using templates or recursive references. Prefer <code>@record</code> for anything
 beyond the simplest <code>@typedef</code>&#8217;d record literal.</p>
 
-<h3 id="jsdoc-method-and-function-comments">7.8 Method and function comments</h3>
+<h3 id="jsdoc-method-and-function-comments">7.8 メソッドと関数のコメント</h3>
 
 <p>Parameter and return types must be documented. The <code>this</code> type should be
 documented when necessary. Method, parameter, and return descriptions (but not
@@ -2154,7 +2155,7 @@ function makeArray(arg) { ... }
     });
 </code></pre>
 
-<h3 id="jsdoc-property-comments">7.9 Property comments</h3>
+<h3 id="jsdoc-property-comments">7.9 プロパティのコメント</h3>
 
 <p>Property types must be documented. The description may be omitted for private
 properties, if name and type provide enough documentation for understanding the
@@ -2195,13 +2196,13 @@ class MyClass {
 MyClass.RETRY_COUNT = 33;
 </code></pre>
 
-<h3 id="jsdoc-type-annotations">7.10 Type annotations</h3>
+<h3 id="jsdoc-type-annotations">7.10 型に関するアノテーション</h3>
 
 <p>Type annotations are found on <code>@param</code>, <code>@return</code>, <code>@this</code>, and <code>@type</code> tags,
 and optionally on <code>@const</code>, <code>@export</code>, and any visibility tags.  Type
 annotations attached to JSDoc tags must always be enclosed in braces.</p>
 
-<h4 id="jsdoc-nullability">7.10.1 Nullability</h4>
+<h4 id="jsdoc-nullability">7.10.1 Null値を許容するかどうか</h4>
 
 <p>The type system defines modifiers <code>!</code> and <code>?</code> for non-null and nullable,
 respectively.  Primitive types (<code>undefined</code>, <code>string</code>, <code>number</code>, <code>boolean</code>,
@@ -2213,7 +2214,7 @@ non-null-by-default type.  As such, all types except primitives and record
 literals must be annotated explicitly with either <code>?</code> or <code>!</code> to indicate whether
 they are nullable or not.</p>
 
-<h4 id="jsdoc-type-casts">7.10.2 Type Casts</h4>
+<h4 id="jsdoc-type-casts">7.10.2 型変換</h4>
 
 <p>In cases where type checking doesn't accurately infer the type of an expression,
 it is possible to tighten the type by adding a type annotation comment and
@@ -2222,7 +2223,7 @@ enclosing the expression in parentheses. Note that the parentheses are required.
 <pre><code class="language-js prettyprint">/** @type {number} */ (x)
 </code></pre>
 
-<h4 id="jsdoc-template-parameter-types">7.10.3 Template Parameter Types</h4>
+<h4 id="jsdoc-template-parameter-types">7.10.3 テンプレートパラメータの型</h4>
 
 <p>Always specify template parameters. This way compiler can do a better job and it
 makes it easier for readers to understand what code does.</p>
@@ -2250,16 +2251,16 @@ makes it easier for readers to understand what code does.</p>
 <li><code>Object</code> is used for type hierarchy and not as map-like structure.</li>
 </ul>
 
-<h3 id="jsdoc-visibility-annotations">7.11 Visibility annotations</h3>
+<h3 id="jsdoc-visibility-annotations">7.11 可視性に関するアノテーション</h3>
 
 <p>Visibility annotations (<code>@private</code>, <code>@package</code>, <code>@protected</code>) may be specified
 in a <code>@fileoverview</code> block, or on any exported symbol or property.  Do not
 specify visibility for local variables, whether within a function or at the top
 level of a module.  All <code>@private</code> names must end with an underscore.</p>
 
-<h2 id="policies">8 Policies</h2>
+<h2 id="policies">8 その他の方針</h2>
 
-<h3 id="policies-be-consistent">8.1 Issues unspecified by Google Style: Be Consistent!</h3>
+<h3 id="policies-be-consistent">8.1 Googleスタイルで規定されていない事柄: 一貫性を持たせよう！</h3>
 
 <p>For any style question that isn't settled definitively by this specification,
 prefer to do what the other code in the same file is already doing. If that
@@ -2273,9 +2274,9 @@ package.</p>
 
 <p></p>
 
-<h3 id="policies-compiler-warnings">8.2 Compiler warnings</h3>
+<h3 id="policies-compiler-warnings">8.2 コンパイラの警告</h3>
 
-<h4 id="policies-use-a-standard-warning-set">8.2.1 Use a standard warning set</h4>
+<h4 id="policies-use-a-standard-warning-set">8.2.1 標準の警告セットを使う</h4>
 
 <p></p>
 
@@ -2283,7 +2284,7 @@ package.</p>
 As far as possible projects should use <code>--warning_level=VERBOSE</code>.
 </p>
 
-<h4 id="policies-how-to-handle-a-warning">8.2.2 How to handle a warning</h4>
+<h4 id="policies-how-to-handle-a-warning">8.2.2 警告をどう扱うか</h4>
 
 <p>Before doing anything, make sure you understand exactly what the warning is
 telling you. If you're not positive why a warning is appearing, ask for help
@@ -2304,7 +2305,7 @@ this, <strong>do not suppress the warning.</strong> The warning should be visibl
 it can be taken care of properly.</li>
 </ol>
 
-<h4 id="policies-suppress-a-warning-at-the-narrowest-reasonable-scope">8.2.3 Suppress a warning at the narrowest reasonable scope</h4>
+<h4 id="policies-suppress-a-warning-at-the-narrowest-reasonable-scope">8.2.3 最も狭い範囲で警告を抑止する</h4>
 
 <p>Warnings are suppressed at the narrowest reasonable scope, usually that of a single local variable or very small method. Often a variable or method is extracted for that reason alone. </p>
 
@@ -2320,7 +2321,7 @@ function fn() {
 <p>Even a large number of suppressions in a class is still better than blinding the
 entire class to this type of warning.</p>
 
-<h3 id="policies-deprecation">8.3 Deprecation</h3>
+<h3 id="policies-deprecation">8.3 非推奨の機能</h3>
 
 <p>Mark deprecated methods, classes or interfaces with <code>@deprecated</code> annotations. A
 deprecation comment must include simple, clear directions for people to fix
@@ -2332,14 +2333,14 @@ their call sites.</p>
 
 <p></p>
 
-<h3 id="policies-code-not-in-google-style">8.4 Code not in Google Style</h3>
+<h3 id="policies-code-not-in-google-style">8.4 Googleスタイルでないコード</h3>
 
 <p>You will occasionally encounter files in your codebase that are not in proper
 Google Style. These may have come from an acquisition, or may have been written
 before Google Style took a position on some issue, or may be in non-Google Style
 for any other reason.</p>
 
-<h4 id="policies-reformatting-existing-code">8.4.1 Reformatting existing code</h4>
+<h4 id="policies-reformatting-existing-code">8.4.1 既存のコードを書き直す</h4>
 
 <p>When updating the style of existing code, follow these guidelines.</p>
 
@@ -2355,7 +2356,7 @@ CL. If you find yourself making a lot of style changes that aren&#8217;t critica
 to the central focus of a CL, promote those changes to a separate CL.</li>
 </ol>
 
-<h4 id="policies-newly-added-code-use-google-style">8.4.2 Newly added code: use Google Style</h4>
+<h4 id="policies-newly-added-code-use-google-style">8.4.2 新規追加されるコード: Googleスタイルを使う</h4>
 
 <p>Brand new files use Google Style, regardless of the style choices of other files
 in the same package.</p>
@@ -2368,7 +2369,7 @@ existing code first is recommended, subject to the advice in
 possible with existing code in the same file, but must not violate the style
 guide.</p>
 
-<h3 id="policies-local-style-rules">8.5 Local style rules</h3>
+<h3 id="policies-local-style-rules">8.5 ローカルルール</h3>
 
 <p>Teams and projects may adopt additional style rules beyond those in this
 document, but must accept that cleanup changes may not abide by these additional
@@ -2376,7 +2377,7 @@ rules, and must not block such cleanup changes due to violating any additional
 rules. Beware of excessive rules which serve no purpose. The style guide does
 not seek to define style in every possible scenario and neither should you.</p>
 
-<h3 id="policies-generated-code-mostly-exempt">8.6 Generated code: mostly exempt</h3>
+<h3 id="policies-generated-code-mostly-exempt">8.6 自動生成されたコード: ほぼ対象外とする</h3>
 
 <p>Source code generated by the build process is not required to be in Google
 Style. However, any generated identifiers that will be referenced from
@@ -2393,21 +2394,21 @@ to avoid conflicts with hand-written identifiers.</p>
 
 <p></p>
 
-<h2 id="appendices">9 Appendices</h2>
+<h2 id="appendices">9 付録</h2>
 
-<h3 id="appendices-jsdoc-tag-reference">9.1 JSDoc tag reference</h3>
+<h3 id="appendices-jsdoc-tag-reference">9.1 JSDoc タグリファレンス</h3>
 
 <p>JSDoc serves multiple purposes in JavaScript.  In addition to being used to
 generate documentation it is also used to control tooling.  The best known are
 the Closure Compiler type annotations.</p>
 
-<h4 id="appendices-type-annotations">9.1.1 Type annotations and other Closure Compiler annotations</h4>
+<h4 id="appendices-type-annotations">9.1.1 型アノテーションとその他の Closure Compiler 用アノテーション</h4>
 
 <p>Documentation for JSDoc used by the Closure Compiler is described in
 <a href="https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler">Annotating JavaScript for the Closure Compiler</a> and <a href="https://github.com/google/closure-compiler/wiki/Types-in-the-Closure-Type-System">Types in the Closure Type
 System</a>.</p>
 
-<h4 id="appendices-documentation-annotations">9.1.2 Documentation annotations</h4>
+<h4 id="appendices-documentation-annotations">9.1.2 ドキュメンテーションアノテーション</h4>
 
 <p>In addition to the JSDoc described in <a href="https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler">Annotating JavaScript for the Closure
 Compiler</a> the following tags are common and well supported by various
@@ -2505,7 +2506,7 @@ goog.dom.RangeIterator.prototype.next = function() {
 annotations appear in the <a href="http://code.google.com/p/jsdoc-toolkit/wiki/TagReference">JSDoc Toolkit Tag Reference</a> but are not considered
 part of valid Google style.</p>
 
-<h4 id="appendices-framework-specific-annotations">9.1.3 Framework specific annotations</h4>
+<h4 id="appendices-framework-specific-annotations">9.1.3 フレームワーク定義のアノテーション</h4>
 
 <p>The following annotations are specific to a particular framework.
 <table>
@@ -2522,12 +2523,12 @@ part of valid Google style.</p>
       <td>Polymer
       </td><td><code>@polymerBehavior</code>
       </td><td>
-          
+
             <a href="https://github.com/google/closure-compiler/wiki/Polymer-Pass">https://github.com/google/closure-compiler/wiki/Polymer-Pass</a>
-          
+
     </td></tr></tbody></table></p>
 
-<h4 id="appendices-notes-about-standard-closure-compiler-annotations">9.1.4 Notes about standard Closure Compiler annotations</h4>
+<h4 id="appendices-notes-about-standard-closure-compiler-annotations">9.1.4 標準 Closure Compiler 用アノテーションに関する注意</h4>
 
 <p>The following tags used to be standard but are now deprecated.
 <table>
@@ -2558,7 +2559,7 @@ part of valid Google style.</p>
 <p>
 </p>
 
-<h3 id="appendices-commonly-misunderstood-style-rules">9.2 Commonly misunderstood style rules</h3>
+<h3 id="appendices-commonly-misunderstood-style-rules">9.2 一般的に誤解されているスタイル規則</h3>
 
 <p>Here is a collection of lesser-known or commonly misunderstood facts about
 Google Style for JavaScript. (The following are true statements; this is not a
@@ -2579,7 +2580,7 @@ and in fact are recommended when they make the code easier to read than the
 equivalent Unicode escape would (<a href="#non-ascii-characters">??</a>).</li>
 </ul>
 
-<h3 id="appendices-style-related-tools">9.3 Style-related tools</h3>
+<h3 id="appendices-style-related-tools">9.3 スタイル関連のツール</h3>
 
 <p>The following tools exist to support various aspects of Google Style.</p>
 
@@ -2615,7 +2616,7 @@ usual way. However, subtrees may choose to opt in to such enforcement locally.</
 variety of missteps and anti-patterns.
 </p>
 
-<h4 id="appendices-conformance-framework">9.4.4 Conformance framework</h4>
+<h4 id="appendices-conformance-framework">9.4.4 Conformance Framework</h4>
 
 <p>The JS Conformance Framework is a tool that is part of the Closure Compiler that
 provides developers a simple means to specify a set of additional checks to be
