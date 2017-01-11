@@ -16,7 +16,7 @@
 <p></p>
 
 <p>この文書は、JavaScriptプログラミング言語におけるGoogleのコーディング標準の<strong>完全な</strong>定義です。
-ここに示される規則に従っている場合のみ、それは<em>Googleスタイル</em>で記述されたJavaScriptソースファイルであると言えます。</p>
+ここに示す規則に従っているものだけが、<em>Googleスタイル</em>で書かれたJavaScriptソースファイルであると言えます。</p>
 
 <p>他のプログラミングスタイルガイドと同様、ここで扱う事柄は単に書式の美しさだけではなく、慣習やコーディング標準にも及びます。
 しかしこの文書が主に注目するのは我々が常に従う原則であり、（人間かツールかに関わらず）実施内容が明確でないアドバイスは避けています。<p>
@@ -50,77 +50,73 @@
 
 <h3 id="file-name">2.1 ファイル名</h3>
 
-<p>File names must be all lowercase and may include underscores (<code>_</code>) or dashes
-(<code>-</code>), but no additional punctuation. Follow the convention that your project
-uses. Filenames&#8217; extension must be <code>.js</code>.</p>
+<p>ファイル名は小文字のみとし、記号はアンダースコア(<code>_</code>)とダッシュ(<code>-</code>)だけを使えます。
+それ以外はあなたのプロジェクトの慣例に従ってください。
+ファイル拡張子は<code>.js</code>でなければなりません。</p>
 
 <h3 id="file-encoding">2.2 文字エンコーディング: UTF-8</h3>
 
-<p>Source files are encoded in <strong>UTF-8</strong>.</p>
+<p>ソースファイルの文字エンコーディングは<strong>UTF-8</strong>とします。</p>
 
 <h3 id="special-characters">2.3 特殊文字</h3>
 
 <h4 id="whitespace-characters">2.3.1 空白文字</h4>
 
-<p>Aside from the line terminator sequence, the ASCII horizontal space character
-(0x20) is the only whitespace character that appears anywhere in a source
-file. This implies that</p>
+<p>改行コードを除き、ソースファイル内で空白文字として利用できるのは半角スペース (0x20) のみです。これは次のことを意味します。</p>
 
 <ol>
-<li><p>All other whitespace characters in string literals are escaped, and</p></li>
-<li><p>Tab characters are <strong>not</strong> used for indentation.</p></li>
+<li><p>文字列リテラル中のその他の空白文字は全てエスケープされること</p></li>
+<li><p>インデントにタブを<strong>使わない</strong>こと</p></li>
 </ol>
 
 <h4 id="special-escape-sequences">2.3.2 特殊エスケープシーケンス</h4>
 
-<p>For any character that has a special escape sequence (<code>\'</code>, <code>\"</code>, <code>\\</code>, <code>\b</code>,
-<code>\f</code>, <code>\n</code>, <code>\r</code>, <code>\t</code>, <code>\v</code>), that sequence is used rather than the
-corresponding numeric escape (e.g <code>\x0a</code>, <code>\u000a</code>, or <code>\u{a}</code>). Legacy octal
-escapes are never used.</p>
+<p>特殊エスケープシーケンス (<code>\'</code>, <code>\"</code>, <code>\\</code>, <code>\b</code>,
+<code>\f</code>, <code>\n</code>, <code>\r</code>, <code>\t</code>, <code>\v</code>)
+を持つ文字はそれを使ってエスケープし、数値エスケープ (e.g. <code>\x0a</code>, <code>\u000a</code>, <code>\u{a}</code>)
+の方は使いません。古い8進数エスケープは絶対に使いません。</p>
 
 <h4 id="non-ascii-characters">2.3.3 非ASCII文字</h4>
 
-<p>For the remaining non-ASCII characters, either the actual Unicode character
-(e.g. <code>&#8734;</code>) or the equivalent hex or Unicode escape (e.g. <code>\u221e</code>) is used,
-depending only on which makes the code <strong>easier to read and understand</strong>.</p>
+<p>残りの非ASCII文字は実際のUnicode文字 (e.g. <code>&#8734;</code>) か、それと一致する16進数またはUnicodeエスケープ
+(e.g. <code>\u221e</code>) で表します。どれを使うかはコードの<strong>読み易さと分かり易さ</strong>
+のみによって決まります。
 
-<p>Tip: In the Unicode escape case, and occasionally even when actual Unicode
-characters are used, an explanatory comment can be very helpful.</p>
+<p>Tip: Unicodeエスケープや、時には実際のUnicode文字を使う場合でも、解説コメントを付けることは大きな助けになります。</p>
 
 <table>
   <thead>
     <tr>
-      <th>Example
-      </th><th>Discussion
+      <th>例
+      </th><th>考察
   </th></tr></thead><tbody>
     <tr>
       <td><code class="prettyprint lang-js">const units = '&#956;s';</code>
-      </td><td>Best: perfectly clear even without a comment.
+      </td><td>最善: コメントなしでも完璧に理解できる。
     </td></tr><tr>
       <td>
         <code class="prettyprint lang-js">const units = '\u03bcs'; // '&#956;s'
         </code>
-      </td><td>Allowed, but there&#8217;s no reason to do this.
+      </td><td>許容範囲だが、これを選ぶ理由がない。
     </td></tr><tr>
       <td>
-        <code class="prettyprint lang-js">const units = '\u03bcs'; // Greek letter mu, 's'
+        <code class="prettyprint lang-js">const units = '\u03bcs'; // ギリシャ文字の mu, 's'
         </code>
-      </td><td>Allowed, but awkward and prone to mistakes.
+      </td><td>許容範囲だが、扱いにくく間違いやすい。
     </td></tr><tr>
       <td><code class="badcode">const units = '\u03bcs';</code>
-      </td><td>Poor: the reader has no idea what this is.
+      </td><td>拙劣: 何のことか読み取れない。
     </td></tr><tr>
       <td>
-        <code class="prettyprint lang-js">return '\ufeff' + content;  // byte order mark
+        <code class="prettyprint lang-js">return '\ufeff' + content;  // バイトオーダーマーク
         </code>
       </td><td>
-        Good: use escapes for non-printable characters, and comment if
-        necessary.
+        良: プリントされない文字にはエスケープを用い、必要ならコメントを付ける。
 </td></tr></tbody></table>
 
-<p>Tip: Never make your code less readable simply out of fear that some programs
-might not handle non-ASCII characters properly. If that happens, those programs
-are <strong>broken</strong> and they must be <strong>fixed</strong>.</p>
+<p>Tip: 何らかのプログラムが非ASCII文字を正しく扱えないかもしれないという不安から、コードの読み易さを犠牲にしないでください。
+そのようなプログラムは<strong>壊れている</strong>のであり、<strong>修正</strong>されなければなりません。</p>
+
 
 <h2 id="source-file-structure">3 ソースファイルの構造</h2>
 
