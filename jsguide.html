@@ -31,8 +31,8 @@
 <code>/** &#8230; */</code>内に記述された人間または機械向けのアノテーションに対して
 <q>ドキュメンテーションコメント</q>という言い方はせず、一般的な &#8220;JSDoc&#8221; の方を用います。</p></li>
 <li><p>このスタイルガイドは以下のフレーズを、<a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a> の用語定義に基づいて使用します:
-<em>must（=しなければならない）</em>、<em>must not（=してはならない）</em>、<em>should（=すべきだ）</em>,
-<em>should not（=すべきでない）</em>,<em>may（=してよい）</em>。
+<em>must（=しなければならない）</em>、<em>must not（=してはならない）</em>、<em>should（=すべきだ、しましょう）</em>,
+<em>should not（=すべきでない、しないようにしましょう）</em>,<em>may（=してよい）</em>。
 <em>prefer（=の方を好む）</em>と<em>avoid（=を避ける）</em>はそれぞれ<em>should</em>と<em>should not</em>に相当します。
 規範として何かを命じるか宣言する文は、<em>must</em>に相当します。</p></li>
 </ol>
@@ -120,42 +120,36 @@
 
 <h2 id="source-file-structure">3 ソースファイルの構造</h2>
 
-<p>A source file consists of, <strong>in order</strong>:</p>
+<p>ソースファイルは<strong>以下の順で</strong>並べたセクションから構成されます:</p>
 
 <ol>
-<li>License or copyright information, if present</li>
-<li><code>@fileoverview</code> JSDoc, if present</li>
-<li><code>goog.module</code> statement</li>
-<li><code>goog.require</code> statements</li>
-<li>The file&#8217;s implementation</li>
+<li>ライセンスまたは著作権情報（存在するなら）</li>
+<li><code>@fileoverview</code> JSDoc （存在するなら）</li>
+<li><code>goog.module</code> ステートメント</li>
+<li><code>goog.require</code> ステートメント</li>
+<li>実装コード</li>
 </ol>
 
-<p><strong>Exactly one blank line</strong> separates each section that is present, except the
-file's implementation, which may be preceded by 1 or 2 blank lines.</p>
+<p>各セクションの間には<strong>正確に1行の空行</strong>を置いてください。ただしコード実装の場合のみ、1または2行間隔を空けてもかまいません。
 
 <h3 id="file-copyright">3.1 ライセンスまたは著作権情報（存在するなら）</h3>
 
-<p>If license or copyright information belongs in a file, it belongs here.</p>
-
-<p></p>
-
-<p></p>
+<p>ファイルのライセンスまたは著作権情報をここに記載します。</p>
 
 <h3 id="file-fileoverview">3.2 <code>@fileoverview</code> JSDoc （存在するなら）</h3>
 
-<p>See <a href="#jsdoc-top-file-level-comments">??</a> for formatting rules.</p>
+<p>書式は <a href="#jsdoc-top-file-level-comments">??</a> を参照してください。</p>
 
 <h3 id="file-goog-module">3.3 <code>goog.module</code> ステートメント</h3>
 
-<p>All files must declare exactly one <code>goog.module</code> name on a single line: lines
-containing a <code>goog.module</code> declaration must not be wrapped, and are therefore an
-exception to the 80-column limit.</p>
+<p>全てのファイルには<code>goog.module</code>名が１つだけ、1行で宣言されていなければなりません:
+<code>goog.module</code>宣言を含む行は折り返してはならないため、1行80文字制限の例外となります。</p>
 
-<p>The single <code>goog.module</code> statement may optionally be followed by calls to
-<code>goog.module.declareLegacyNamespace();</code> and/or <code>goog.setTestOnly();</code> Avoid
-<code>goog.module.declareLegacyNamespace()</code> when possible.</p>
+<p><code>goog.module</code>ステートメントの後ろに<code>goog.module.declareLegacyNamespace();</code>や
+<code>goog.setTestOnly();</code>の呼び出しが続いてもかまいません。ただし可能なら
+<code>goog.module.declareLegacyNamespace()</code>の使用は避けてください。</p>
 
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">goog.module('my.test.helpers');
 goog.module.declareLegacyNamespace();
@@ -164,50 +158,37 @@ goog.setTestOnly();
 
 <h4 id="file-declare-legacy-namespace">3.3.1 <code>goog.module.declareLegacyNamespace</code></h4>
 
-<p><code>goog.module.declareLegacyNamespace</code> exists to ease the transition from
-traditional namespaces but comes with some naming restrictions. As the child
-module name must be created after the parent namespace, this name <strong>must not</strong>
-be a child or parent of any other <code>goog.module</code> (for example,
-<code>goog.module('parent');</code> and <code>goog.module('parent.child');</code> cannot both exist,
-nor can <code>goog.module('parent');</code> and <code>goog.module('parent.child.grandchild');</code>).</p>
+<p><code>goog.module.declareLegacyNamespace</code>は伝統的な名前空間からの移行を容易にするためのものですが、いくつかの制約も伴います。
+子階層のモジュールは親となる名前空間より後に生成されなければならず、その名前を他の<code>goog.module</code>の子や親として用いては<strong>いけません</strong>。
+(例えば<code>goog.module('parent');</code>と<code>goog.module('parent.child');</code>は共存できませんし、
+<code>goog.module('parent');</code>と<code>goog.module('parent.child.grandchild');</code>も同様です。)</p>
 
 <h4 id="file-es6-modules">3.3.2 ES6 モジュール</h4>
 
-<p>Do not use ES6 modules yet (i.e. the <code>export</code> and <code>import</code> keywords), as their
-semantics are not yet finalized. Note that this policy will be revisited once
-the semantics are fully-standard.</p>
+<p>セマンティクスが確定していないため、ES6 モジュールはまだ使いません (i.e. <code>export</code>や<code>import</code>キーワード)。
+セマンティクスが完全に標準化されれば、この方針は見直されるであろうという点に注意してください。</p>
 
 <h3 id="file-goog-require">3.4 <code>goog.require</code> ステートメント</h3>
 
-<p>Imports are done with <code>goog.require</code> statements, grouped together immediately
-following the module declaration. Each <code>goog.require</code> is assigned to a single
-constant alias, or else destructured into several constant aliases. These
-aliases are the only acceptable way to refer to the <code>require</code>d dependency,
-whether in code or in type annotations: the fully qualified name is never used
-except as the argument to <code>goog.require</code>. If a module is imported only for its
-side effects, the assignment may be omitted, but the fully qualified name may
-not appear anywhere else in the file. Alias names should match the final
-dot-separated component of the imported module name when possible, though
-additional components may be included (with appropriate casing such that the
-alias' casing still correctly identifies its type) if necessary to
-disambiguate, or if it significantly improves readability. <code>goog.require</code>
-statements may not appear anywhere else in the file.</p>
+<p>モジュール宣言の直後に、<code>goog.require</code>によるインポートをまとめて実行します。
+<code>goog.require</code>の結果は単独の別名定数に代入されるか、分割代入によって複数の別名定数へ代入されます。
+これらの別名は、<code>require</code>された依存モジュールをコードや型アノテーションから参照するために許された唯一の方法です:
+<code>goog.require</code>の引数を除き、完全修飾名は決して使われません。
+副作用の解決のためだけにインポートされたモジュールの場合、別名への代入は省略してもかまいませんが、その完全修飾名がファイルの他の場所に現れることはないでしょう。
+可能なら、別名はインポートされるモジュール名のドットで区切られた最後の部分と一致させるべきです。
+ただしそれが曖昧さの解消のため必要であるか、可読性を大幅に向上させるのであれば、（その型を正しく識別できるような適切なケーシングを用いて）別名に追加の要素を含めてもかまいません。
+<code>goog.require</code>がファイル内の他の場所に現れることはありません。</p>
 
+<p>別名の順序は大文字、小文字、開き括弧（分割代入の場合）の順とし、それぞれを標準ASCIIコードに従って並べます。
+分割代入式内の別名の順序も同様です。</p>
 
+<p>Tip: この順序を暗記したり、手動で強制する必要はありません。
+あなたが使っているIDEか<code>sort</code>によるインポートの自動ソート機能に頼ることができます。</p>
 
-<p>The lines are sorted via standard ASCII ordering of the entire line, with
-uppercase letters, then lowercase letters, then open-braces (for
-destructuring). Aliases within a destructured expression are sorted the same
-way.</p>
+<p>長い別名やモジュール名によって1行の文字数が80の上限を超えたとしても、それを折り返しては<strong>いけません</strong>:
+goog.requireを含む行は80文字制限の例外です。</p>
 
-<p>Tip: There&#8217;s no need to memorize this order and enforce it manually. You can
-rely on your IDE or even <code>sort</code> to sort your imports automatically.</p>
-
-<p>If a long alias or module name would cause a line to exceed the 80-column limit,
-it <strong>must not</strong> be wrapped: goog.require lines are an exception to the 80-column
-limit.</p>
-
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">const MyClass = goog.require('some.package.MyClass');
 const NsMyClass = goog.require('other.ns.MyClass');
@@ -217,29 +198,25 @@ const than80columns = goog.require('pretend.this.is.longer.than80columns');
 const {clear, forEach, map} = goog.require('goog.array');
 </code></pre>
 
-<p>Illegal:</p>
+<p>悪い例:</p>
 
-<pre><code class="language-js badcode prettyprint">const randomName = goog.require('something.else'); // name must match
+<pre><code class="language-js badcode prettyprint">const randomName = goog.require('something.else'); // 名前が一致しない
 
-const {clear, forEach, map} = // don't break lines
+const {clear, forEach, map} = // 改行は不可
     goog.require('goog.array');
 
 function someFunction() {
-  const alias = goog.require('my.long.name.alias'); // must be at top level
+  const alias = goog.require('my.long.name.alias'); // トップレベルでなければならない
   // &#8230;
 }
 </code></pre>
 
-
-
 <h3 id="file-implementation">3.5 実装コード</h3>
 
-<p>The actual implementation follows after all dependency information is declared
-(separated by at least one blank line).</p>
+<p>実装コードは全ての依存情報が宣言された後に記述されます（前セクションから少なくとも1行の空白を空けてください）。</p>
 
-<p>This may consist of any module-local declarations (constants, variables,
-classes, functions, etc), as well as any exported symbols.
-</p>
+<p>このセクションは全てのモジュールローカルな宣言（定数、変数、クラス、関数、など）とエクスポートされたシンボルから構成されます。</p>
+
 
 <h2 id="formatting">4 書式</h2>
 
