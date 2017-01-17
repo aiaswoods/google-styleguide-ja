@@ -166,7 +166,7 @@ goog.setTestOnly();
 <h4 id="file-es6-modules">3.3.2 ES6 モジュール</h4>
 
 <p>セマンティクスが確定していないため、ES6 モジュールはまだ使いません (i.e. <code>export</code>や<code>import</code>キーワード)。
-セマンティクスが完全に標準化されれば、この方針は見直されるであろうという点に注意してください。</p>
+注意してほしいのは、セマンティクスが完全に標準化されればこの方針は見直されるだろうということです。</p>
 
 <h3 id="file-goog-require">3.4 <code>goog.require</code> ステートメント</h3>
 
@@ -220,23 +220,22 @@ function someFunction() {
 
 <h2 id="formatting">4 書式</h2>
 
-<p><strong>Terminology Note</strong>: <em>block-like construct</em> refers to the body of a class,
-function, method, or brace-delimited block of code.  Note that, by
-<a href="#features-array-literals">??</a> and <a href="#features-object-literals">??</a>, any array or
-object literal may optionally be treated as if it were a block-like construct.</p>
+<p><strong>用語解説</strong>: <em>ブロック風 (block-like) 構造</em>はクラス、関数、メソッドの本体と括弧で区切られたコードブロックを指します。
+<a href="#features-array-literals">??</a> と <a href="#features-object-literals">??</a>
+にあるように、配列リテラルとオブジェクトリテラルはブロック風構造として扱われる場合がある点に注意してください。</p>
 
-<p>Tip: Use clang-format. The JavaScript community has invested effort to make
-sure clang-format <q>does the right thing</q> on JavaScript files.</p>
+<p>Tip: clang-format を使ってください。JavaScriptコミュニティはclang-formatがJavaScriptファイル上で確実に
+<q>正しく動作する</q>ための努力を続けています。</p>
 
 <h3 id="formatting-braces">4.1 括弧</h3>
 
 <h4 id="formatting-braces-all">4.1.1 全ての制御構造に括弧を用いる</h4>
 
-<p>Braces are required for all control structures (i.e. <code>if</code>, <code>else</code>, <code>for</code>, <code>do</code>,
-<code>while</code>, as well as any others), even if the body contains only a single
-statement.  The first statement of a non-empty block must begin on its own line.</p>
+<p>全ての制御構造 (i.e. <code>if</code>, <code>else</code>, <code>for</code>, <code>do</code>,
+<code>while</code>, as well as any others) には括弧が必要です。括弧内に１つの文しか含まれていなかったとしてもです。
+空白でないブロックの最初の文は、独立した行として開始されなければなりません。</p>
 
-<p>Illegal:</p>
+<p>悪い例:</p>
 
 <pre><code class="language-js badcode prettyprint">if (someVeryLongCondition())
   doSomething();
@@ -244,30 +243,28 @@ statement.  The first statement of a non-empty block must begin on its own line.
 for (let i = 0; i &lt; foo.length; i++) bar(foo[i]);
 </code></pre>
 
-<p><strong>Exception</strong>: A simple if statement that can fit entirely on a single line with
-no wrapping (and that doesn&#8217;t have an else) may be kept on a single line with no
-braces when it improves readability.  This is the only case in which a control
-structure may omit braces and newlines.</p>
+<p><strong>例外</strong>: 折り返しせずに全体を1行で収められる（elseを持たない）シンプルな
+if 文は、もしそれが可読性を向上させるなら、括弧なしに1行で記述できます。
+これは制御構造において括弧と改行を省略できる唯一のケースです。</p>
 
 <pre><code class="language-js prettyprint">if (shortCondition()) return;
 </code></pre>
 
 <h4 id="formatting-nonempty-blocks">4.1.2 空でないブロック: K&amp;R スタイル</h4>
 
-<p>Braces follow the Kernighan and Ritchie style (<q><a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian brackets</a></q>) for
-<em>nonempty</em> blocks and block-like constructs:</p>
+<p><em>空でない</em>ブロックとブロック風構造の括弧の書式は、Kernighan and Ritchie スタイル
+(<q><a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian brackets</a></q>)
+に従います:</p>
 
 <ul>
-<li>No line break before the opening brace.</li>
-<li>Line break after the opening brace.</li>
-<li>Line break before the closing brace.</li>
-<li>Line break after the closing brace <em>if</em> that brace terminates a statement or
-the body of a function or class statement, or a class method. Specifically,
-there is <em>no</em> line break after the brace if it is followed by <code>else</code>, <code>catch</code>,
-<code>while</code>, or a comma, semicolon, or right-parenthesis.</li>
+<li>開き括弧の前で改行しません。</li>
+<li>開き括弧の後ろで改行します。</li>
+<li>閉じ括弧の前で改行します。</li>
+<li><em>もし</em>閉じ括弧が文やクラス、もしくはクラスメソッドの終端なら、その後ろで改行します。
+つまり、後ろに<code>else</code>, <code>catch</code>, <code>while</code>, カンマ, セミコロン, 右丸括弧 が続く場合は改行<em>しません</em>。</li>
 </ul>
 
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">class InnerClass {
   constructor() {}
@@ -288,17 +285,17 @@ there is <em>no</em> line break after the brace if it is followed by <code>else<
 
 <h4 id="formatting-empty-blocks">4.1.3 空ブロック: 簡潔でよい</h4>
 
-<p>An empty block or block-like construct <em>may</em> be closed immediately after it is
-opened, with no characters, space, or line break in between (i.e. <code>{}</code>),
-<strong>unless</strong> it is a part of a <em>multi-block statement</em> (one that directly contains
-multiple blocks: <code>if</code>/<code>else</code> or <code>try</code>/<code>catch</code>/<code>finally</code>).</p>
+<p>空のブロックとブロック風構造は、開き括弧の後に文字、スペース、改行を入れずにすぐに閉じて<em>かまいません</em> (i.e. <code>{}</code>)。
+<strong>ただし</strong>それが<em>マルチブロック文</em>(複数のブロックを直接含むもの:
+<code>if</code>/<code>else</code>または<code>try</code>/<code>catch</code>/<code>finally</code>)
+である場合を除きます。
 
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">function doNothing() {}
 </code></pre>
 
-<p>Illegal:</p>
+<p>悪い例:</p>
 
 <pre><code class="language-js prettyprint badcode">if (condition) {
   // &#8230;
@@ -313,16 +310,15 @@ try {
 
 <h3 id="formatting-block-indentation">4.2 ブロックのインデント: +2 スペース</h3>
 
-<p>Each time a new block or block-like construct is opened, the indent increases by
-two spaces. When the block ends, the indent returns to the previous indent
-level. The indent level applies to both code and comments throughout the
-block. (See the example in <a href="#formatting-nonempty-blocks">??</a>).</p>
+<p>新しいブロックまたはブロック風構造が開かれるたび、2スペース分のインデントを追加します。
+ブロックが閉じられたら、１つ前のレベルまでインデントを戻します。
+インデントレベルは当該ブロック全体でコードとコメントの両方に適用されます。
+（<a href="#formatting-nonempty-blocks">??</a>の例を参照してください）</p>
 
 <h4 id="formatting-array-literals">4.2.1 配列リテラル: 任意に <q>ブロック風</q> で</h4>
 
-<p>Any array literal may optionally be formatted as if it were a &#8220;block-like
-construct.&#8221; For example, the following are all valid (<strong>not</strong> an exhaustive
-list):</p>
+<p>配列リテラルは &#8220;ブロック風構造&#8221; のような書式で書くことができます。
+以下の例は全て正しい書き方です（網羅的なリストでは<strong>ありません</strong>）:</p>
 
 <pre><code class="language-js prettyprint columns">const a = [
   0, 1, 2,
@@ -342,15 +338,14 @@ someMethod(foo, [
 ], bar);
 </code></pre>
 
-<p>Other combinations are allowed, particularly when emphasizing semantic groupings
-between elements, but should not be used only to reduce the vertical size of
-larger arrays.</p>
+<p>その他の組み合わせも許容されます。特に配列要素の意味的なグループを強調する場合には。
+ただし、大きな配列の垂直方向のサイズを縮小するためだけの書式は使用すべきではありません。</p>
 
 <h4 id="formatting-object-literals">4.2.2 オブジェクトリテラル: 任意に <q>ブロック風</q> で</h4>
 
-<p>Any object literal may optionally be formatted as if it were a &#8220;block-like
-construct.&#8221; The same examples apply as <a href="#formatting-array-literals">??</a>. For
-example, the following are all valid (<strong>not</strong> an exhaustive list):</p>
+<p>オブジェクトリテラルは &#8220;ブロック風構造&#8221; のような書式で書くことができます。
+<a href="#formatting-array-literals">??</a>と同じ例が当てはまります。
+以下の例は全て正しい書き方です（網羅的なリストでは<strong>ありません</strong>）:</p>
 
 <pre><code class="language-js prettyprint columns">const a = {
   a: 0, b: 1
@@ -370,12 +365,12 @@ someMethod(foo, {
 
 <h4 id="formatting-class-literals">4.2.3 クラスリテラル</h4>
 
-<p>Class literals (whether declarations or expressions) are indented as blocks. Do
-not add commas after methods, or a semicolon after the closing brace of a class
-<em>declaration</em> (statements&#8212;such as assignments&#8212;that contain class <em>expressions</em>
-are still terminated with a semicolon).</p>
+<p>クラスリテラルは（宣言か式かに関わらず）ブロックとしてインデントされます。
+メソッドの後ろにカンマを付けないでください。
+またクラス<em>宣言</em>の閉じタグの後ろにセミコロンを付けないでください
+（クラス<em>式</em>を含む文&#8212;代入式のような&#8212;の方はセミコロンで終わらせます）。</p>
 
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint columns">class Foo {
   constructor() {
@@ -407,15 +402,12 @@ class Frobnicator {
 
 <h4 id="formatting-function-expressions">4.2.4 関数</h4>
 
-<p>When declaring an anonymous function in the list of arguments for a function
-call, the body of the function is indented two spaces more than the preceding
-indentation depth.</p>
+<p>関数呼び出し時の引数リストの中で無名関数を宣言する場合、関数の本体は先行する階層から更にスペース2文字分インデントします。</p>
 
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">prefix.something.reallyLongFunctionName('whatever', (a1, a2) =&gt; {
-  // Indent the function body +2 relative to indentation depth
-  // of the 'prefix' statement one line above.
+  // 関数の本体を1行上の 'prefix' 文の位置から +2 文字分インデントする。
   if (a1.equals(a2)) {
     someOtherLongFunctionName(a1);
   } else {
@@ -426,28 +418,24 @@ indentation depth.</p>
 some.reallyLongFunctionCall(arg1, arg2, arg3)
     .thatsWrapped()
     .then((result) =&gt; {
-      // Indent the function body +2 relative to the indentation depth
-      // of the '.then()' call.
+      // 関数の本体を '.then()' 呼び出しの位置から +2 文字分インデントする。
       if (result) {
         result.use();
       }
     });
 </code></pre>
 
-<h4 id="formatting-switch-statements">4.2.5 Switch 文</h4>
+<h4 id="formatting-switch-statements">4.2.5 switch 文</h4>
 
-<p>As with any other block, the contents of a switch block are indented +2.</p>
+<p>他のブロックと同様、switch ブロックの項目部分は +2 文字インデントします。</p>
 
+<p>項目ラベルの後ろには改行を入れ、+2 文字分インデントを追加します。これはブロックの開始と全く同じです。
+レキシカルスコープで必要な場合は、明示的なブロックも使用できます。
+次の項目ラベルはその前でブロックが閉じられたかのように、1つ前のインデントレベルに戻って開始されます。</p>
 
+<p><code>break</code>と次の項目の間に１行空行を入れてもかまいません。</p>
 
-<p>After a switch label, a newline appears, and the indentation level is increased
-+2, exactly as if a block were being opened. An explicit block may be used if
-required by lexical scoping. The following switch label returns to the previous
-indentation level, as if a block had been closed.</p>
-
-<p>A blank line is optional between a <code>break</code> and the following case.</p>
-
-<p>Example:</p>
+<p>例:</p>
 
 <pre><code class="language-js prettyprint">switch (animal) {
   case Animal.BANDERSNATCH:
@@ -489,7 +477,7 @@ in JSDoc or a shell command intended to be copied-and-pasted).</li>
 <a href="#file-goog-require">??</a>).</li>
 </ol>
 
-<h3 id="formatting-line-wrapping">4.5 改行</h3>
+<h3 id="formatting-line-wrapping">4.5 行の折り返し</h3>
 
 <p><strong>Terminology Note</strong>: <em>Line-wrapping</em> is defined as breaking a single expression
 into multiple lines.</p>
