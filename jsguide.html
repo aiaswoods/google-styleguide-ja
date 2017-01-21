@@ -455,62 +455,49 @@ some.reallyLongFunctionCall(arg1, arg2, arg3)
 
 <h4 id="formatting-one-statement-perline">4.3.1 １行には１文まで</h4>
 
-<p>Each statement is followed by a line-break.</p>
+<p>文の後ろに必ず改行を入れます。</p>
 
 <h4 id="formatting-semicolons-are-required">4.3.2 セミコロンは必要</h4>
 
-<p>Every statement must be terminated with a semicolon. Relying on automatic
-semicolon insertion is forbidden.</p>
+<p>全ての文はセミコロンで終わらなければなりません。セミコロンの自動挿入に頼るのは禁止です。</p>
 
 <h3 id="formatting-column-limit">4.4 １行の最大文字数: 80</h3>
 
-<p>JavaScript code has a column limit of 80 characters. Except as noted below, any
-line that would exceed this limit must be line-wrapped, as explained in
-<a href="#formatting-line-wrapping">??</a>.</p>
+<p>JavaScriptコードの1行あたりの文字数は80を上限とします。後に示す例外を除き、この上限を超える行は必ず折り返さなくてはなりません。
+詳しくは <a href="#formatting-line-wrapping">??</a> で説明します。</p>
 
-<p><strong>Exceptions:</strong></p>
+<p><strong>例外:</strong></p>
 
 <ol>
-<li>Lines where obeying the column limit is not possible (for example, a long URL
-in JSDoc or a shell command intended to be copied-and-pasted).</li>
-<li><code>goog.module</code> and <code>goog.require</code> statements (see <a href="#file-goog-module">??</a> and
-<a href="#file-goog-require">??</a>).</li>
+<li>文字数制限に従うことが不可能な行（例えばJSdoc内の長いURLや、コピー・アンド・ペーストされることを意図しているシェルコマンド）</li>
+<li><code>goog.module</code>と<code>goog.require</code>（ <a href="#file-goog-module">??</a> と
+<a href="#file-goog-require">??</a> を参照）</li>
 </ol>
 
 <h3 id="formatting-line-wrapping">4.5 行の折り返し</h3>
 
-<p><strong>Terminology Note</strong>: <em>Line-wrapping</em> is defined as breaking a single expression
-into multiple lines.</p>
+<p><strong>用語解説</strong>: <em>行の折り返し</em> とは、１つの式を複数行に分解することです。</p>
 
-<p>There is no comprehensive, deterministic formula showing <em>exactly</em> how to
-line-wrap in every situation. Very often there are several valid ways to
-line-wrap the same piece of code.</p>
+<p>行の折り返しについてあらゆるケースで<em>ぴたりと</em>当てはまるような、包括的で確定された公式はありません。
+大抵の場合、同じコードを折り返すための複数の正しい方法が存在します。</p>
 
-<p>Note: While the typical reason for line-wrapping is to avoid overflowing the
-column limit, even code that would in fact fit within the column limit may be
-line-wrapped at the author's discretion.</p>
-
-<p>Tip: Extracting a method or local variable may solve the problem without the
-need to line-wrap.</p>
+<p>Tip: メソッドやローカル変数の抽出によって、折り返しを必要とせずに問題を解決できるかもしれません。</p>
 
 <h4 id="formatting-where-to-break">4.5.1 どこで折り返すか</h4>
 
-<p>The prime directive of line-wrapping is: prefer to break at a <strong>higher syntactic
-level</strong>. Also:</p>
+<p>行の折り返しにおける最も重要な指針は: できるだけ<strong>高い構文レベル</strong>で改行する、です。また:</p>
 
 <ol>
-<li>When a line is broken at an operator the break comes after the symbol. (Note
-that this is not the same practice used in Google style for Java.)
+<li>演算子の箇所で折り返す場合、演算子の後ろで改行します。
+（これはJava向けのGoogleスタイルとは異なるプラクティスです、ご注意ください）
 <ol>
-<li>This does not apply to the <q>dot</q> (<code>.</code>), which is not actually an
-operator.</li>
+<li><q>ドット</q> (<code>.</code>）は実は演算子ではないので、このルールは適用されません。</li>
 </ol></li>
-<li>A method or constructor name stays attached to the open parenthesis (<code>(</code>)
-that follows it.</li>
-<li>A comma (<code>,</code>) stays attached to the token that precedes it.</li>
+<li>メソッド名またはコンストラクタ名の後ろの開き丸括弧（<code>(</code>）は、同じ行にそのまま付加されます。</li>
+<li>カンマ（<code>,</code>）は先行するトークンと同じ行にそのまま付加されます。</li>
 </ol>
 
-<p>Preferred:</p>
+<p>好ましい例:</p>
 
 <pre><code class="language-js prettyprint">this.foo =
     foo(
@@ -518,30 +505,27 @@ that follows it.</li>
         1 + someLongFunctionName());
 </code></pre>
 
-<p>Discouraged:</p>
+<p>残念な例:</p>
 
 <pre><code class="language-js prettyprint badcode">this.foo = foo(firstArg, 1 +
     someLongFunctionName());
 </code></pre>
 
-<p>In the preceding example, the syntactic levels from highest to lowest are as
-follows: assignment, outer function call, parameters, plus, inner function call.</p>
+<p>上の例における構文レベルは、高い方から順に以下のとおりです:
+代入、外部関数呼び出し、パラメータ、プラス演算子、内部関数呼び出し</p>
 
-<p>Note: The primary goal for line wrapping is to have clear code, not necessarily
-code that fits in the smallest number of lines.</p>
+<p>Note: 行の折り返しの第一の目的はコードを明瞭にすることであり、最も少ない行数に収める必要はありません。</p>
 
-<p>See also <a href="#formatting-rectangle-rule">??</a>.</p>
+<p><a href="#formatting-rectangle-rule">??</a> も参照してください。</p>
 
-<h4 id="formatting-indent">4.5.2 後続行のインデントは少なくとも +4 スペース</h4>
+<h4 id="formatting-indent">4.5.2 継続行のインデントは少なくとも +4 スペース</h4>
 
-<p>When line-wrapping, each line after the first (each <em>continuation line</em>) is
-indented at least +4 from the original line, unless it falls under the rules of
-block indentation.</p>
+<p>行が折り返される際、最初の行より後の行（各<em>継続行</em>）は、
+ブロックインデントのルールに該当しない限り元の行から少なくとも +4 インデントします。</p>
 
-<p>When there are multiple continuation lines, indentation may be varied beyond +4
-as appropriate.  In general, continuation lines at a deeper syntactic level are
-indented by larger multiples of 4, and two lines use the same indentation level
-if and only if they begin with syntactically parallel elements.</p>
+<p>複数の継続行が存在する際、インデントが +4 を超えることがあるかもしれません。
+通常、より深い構文レベルの継続行は4の倍数でインデントされます。
+二つの行が同じインデントレベルを取るのは両者が構文的に平行な要素で始まる場合のみです。</p>
 
 <p><a href="#formatting-horizontal-alignment">??</a> addresses the discouraged practice of
 using a variable number of spaces to align certain tokens with previous lines.</p>
