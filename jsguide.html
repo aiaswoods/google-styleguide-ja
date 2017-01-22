@@ -41,7 +41,7 @@
 
 <h3 id="guide-notes">1.2 例文について</h3>
 
-<p>この文書内のサンプルコードは<strong>規範的ではありません</strong>。
+<p>この文書内のサンプルコードは<strong>模範的ではありません</strong>。
 それらはGoogleスタイルではあるものの、コードを表現する<em>唯一の</em>スタイリッシュな方法を示していないかもしれません。
 サンプル内で任意に選択されている書式は、規則として強制されるものではありません。</p>
 
@@ -527,80 +527,70 @@ some.reallyLongFunctionCall(arg1, arg2, arg3)
 通常、より深い構文レベルの継続行は4の倍数でインデントされます。
 二つの行が同じインデントレベルを取るのは両者が構文的に平行な要素で始まる場合のみです。</p>
 
-<p><a href="#formatting-horizontal-alignment">??</a> addresses the discouraged practice of
-using a variable number of spaces to align certain tokens with previous lines.</p>
+<p><a href="#formatting-horizontal-alignment">??</a>
+では、可変数のスペースを使って前の行の特定トークンに位置を揃える、余り推奨しないプラクティスを扱います。</p>
 
 <h3 id="formatting-whitespace">4.6 空白</h3>
 
 <h4 id="formatting-vertical-whitespace">4.6.1 垂直方向の空白</h4>
 
-<p>A single blank line appears:</p>
+<p>1行の空行が置かれるのは:</p>
 
 <ol>
-<li>Between consecutive methods in a class or object literal
+<li>クラスまたはオブジェクトリテラル内で、連続するメソッドの間。
 <ol>
-<li>Exception: A blank line between two consecutive properties definitions in
-an object literal (with no other code between them) is optional. Such
-blank lines are used as needed to create <em>logical groupings</em> of fields.</li>
+<li>例外: オブジェクトリテラル内の連続するプロパティ定義の間（そこに他のコードが無い場合）に空行を入れるかどうかは任意です。
+このような空行は必要に応じて各項目の<em>論理的なグループ化</em>のために使われます。</li>
 </ol></li>
-<li>Within method bodies, sparingly to create <em>logical groupings</em> of statements.
-Blank lines at the start or end of a function body are not allowed.</li>
-<li><em>Optionally</em> before the first or after the last method in a class or object
-literal (neither encouraged nor discouraged).</li>
-<li>As required by other sections of this document (e.g.
-<a href="#file-goog-require">??</a>).</li>
+<li>メソッド本体に含まれる各文の<em>論理的なグループ化</em>のため、ただし控えめに。
+関数本体の最初と最後の行を空行にするのは許容されません。</li>
+<li><em>任意に</em>、クラスまたはオブジェクトリテラルの最初のメソッドの前または最後のメソッドの後（してもしなくてもかまいません）。</li>
+<li>この文書の他の章で必要と規定している場合（e.g. <a href="#file-goog-require">??</a>）。</li>
 </ol>
 
-<p><em>Multiple</em> consecutive blank lines are permitted, but never required (nor
-encouraged).</p>
+<p><em>複数行の</em>空行は認められていますが、それが必須であるケースはありません（し、推奨もしません）。</p>
 
 <h4 id="formatting-horizontal-whitespace">4.6.2 水平方向の空白</h4>
 
-<p>Use of horizontal whitespace depends on location, and falls into three broad
-categories: <em>leading</em> (at the start of a line), <em>trailing</em> (at the end of a
-line), and <em>internal</em>.  Leading whitespace (i.e., indentation) is addressed
-elsewhere.  Trailing whitespace is forbidden.</p>
+<p>水平方向の空白が使用される箇所は、大きく３種類に分類されます: <em>行の先頭</em>、<em>行の末尾</em>、<em>行の中間</em>。
+行頭の空白（i.e. インデント）は他の場所で扱います。行末の空白は禁止です。</p>
 
-<p>Beyond where required by the language or other style rules, and apart from
-literals, comments, and JSDoc, a single internal ASCII space also appears in the
-following places <strong>only</strong>.</p>
+<p>言語仕様やスタイルルールの要件以外で、またリテラル、コメント、JSDocの中を除くと、行内にASCIIスペースが現れるのは以下の箇所
+<strong>のみ</strong>です。
 
 <ol>
-<li>Separating any reserved word (such as <code>if</code>, <code>for</code>, or <code>catch</code>) from an open
-parenthesis (<code>(</code>) that follows it on that line.</li>
-<li>Separating any reserved word (such as <code>else</code> or <code>catch</code>) from a closing
-curly brace (<code>}</code>) that precedes it on that line.</li>
-<li>Before any open curly brace (<code>{</code>), with two exceptions:
+<li>全ての予約語（ <code>if</code>, <code>for</code>, <code>catch</code>
+のような）と、同一行内でそれに続く開き丸括弧（ <code>(</code> ）の間</li>
+
+<li>全ての予約語（ <code>else</code> や <code>catch</code> のような）と、同一行内でそれに先行する閉じ丸括弧（ <code>)</code> ）の間。</li>
+<li>開き括弧（ <code>{</code> ）の前。ただし2つの例外があります:
 <ol>
-<li>Before an object literal that is the first argument of a function or the
-first element in an array literal (e.g. <code>foo({a: [{c: d}]})</code>).</li>
-<li>In a template expansion, as it is forbidden by the language
-(e.g. <code>abc${1 + 2}def</code>).</li>
+<li>関数の最初の引数として指定されるオブジェクトリテラル、または配列リテラルの最初の要素の前
+（e.g. <code>foo({a: [{c: d}]})</code>）。</li>
+<li>テンプレート式の中。言語仕様で禁止されているため（e.g. <code>abc${1 + 2}def</code>）。</li>
 </ol></li>
-<li>On both sides of any binary or ternary operator.</li>
-<li>After a comma (<code>,</code>) or semicolon (<code>;</code>). Note that spaces are <em>never</em> allowed
-before these characters.</li>
-<li>After the colon (<code>:</code>) in an object literal.</li>
-<li>On both sides of the double slash (<code>//</code>) that begins an end-of-line
-comment. Here, multiple spaces are allowed, but not required.</li>
-<li>After an open-JSDoc comment character and on both sides of close characters
-(e.g. for short-form type declarations or casts: <code>this.foo = /** @type
-{number} */ (bar);</code> or <code>function(/** string */ foo) {</code>).</li>
+<li>二項または条件演算子の前後。</li>
+<li>カンマ（<code>,</code>）またはセミコロン（<code>;</code>）の後。これらの文字の前のスペースは<em>絶対に</em>許されません。</li>
+<li>オブジェクトリテラル内のコロン（<code>:</code>）の後。</li>
+<li>行末コメントの先頭にあるダブルスラッシュ（<code>//</code>）の前後。
+この時複数スペースを使ってもかまいませんが、必須ではありません。</li>
+<li>JSDocコメントの開始文字の後と、終了文字の前後
+（e.g. 短い形式の宣言またはキャストの場合: <code>this.foo = /** @type
+{number} */ (bar);</code> または <code>function(/** string */ foo) {</code>).</li>
 </ol>
 
 <h4 id="formatting-rectangle-rule">4.6.3 矩形化規則</h4>
 
-<p>All code should follow the Rectangle Rule.</p>
+<p>全てのコードは矩形化規則に従うべきです。</p>
 
 <p><span class="external tip">
-<em>When a source file is formatted, each subtree gets its own bounding rectangle,
- containing all of that subtree&#8217;s text and none of any other subtree&#8217;s.</em>
+<em>整形されたソースファイルで、各サブツリーは全体が矩形で囲まれたような形状をなします。
+そこにはサブツリーに含まれる全てのテキストが含まれ、他のサブツリーの要素は一切含まれません。</em>
 </span></p>
 
 <p>
-What does this mean? Take the well formatted example below, and draw a rectangle
-around just the subexpression <code>x / currentEstimate</code>:
-</p>
+どういう意味でしょうか？正しく整形された以下の例を見てください。
+部分式 <code>x / currentEstimate</code> の周りを囲うと矩形になっているのがわかります:</p>
 
 <pre><code class="language-js prettyprint external">   currentEstimate =
         (currentEstimate + x / currentEstimate)
@@ -608,77 +598,75 @@ around just the subexpression <code>x / currentEstimate</code>:
 </code></pre>
 
 <p>
-This is possible&#8212;good! But in the badly formatted example, there is no rectangle
-containing just that subexpression and nothing more&#8212;bad!
-</p>
+これならできますね &#8212; よろしい！
+しかし正しくない次の例では、純粋に部分式だけを含む矩形ができていません &#8212; いけませんね！</p>
 
 <pre><code class="language-js prettyprint external">   currentEstimate = (currentEstimate + x
         / currentEstimate) / 2.0f;
 </code></pre>
 
 <p>
-In the well formatted example, every subtree has its own rectangle; for
-instance, the right-hand side (<q>RHS</q>) of the assignment has its own rectangle in
-the well formatted example, but not in the other. This promotes readability by
-exposing program structure in the physical layout; the RHS is in just one place,
-not partly in one place and partly another.
-</p>
+正しく整形された例において、全てのサブツリーには自身を表す矩形形状が存在しています;
+例えば正しい例の代入式の右手側（ <q>RHS</q> ）のコードは矩形をなしていますが、悪い例の方はそうではありません。
+プログラムの構造を物理的なレイアウトで示すことによって、可読性は向上します;
+RHSは一箇所にまとめられおり、ばらばらになっていません。</p>
 
-<h4 id="formatting-horizontal-alignment">4.6.4 水平方向の位置揃え: 嫌々ながら</h4>
+<h4 id="formatting-horizontal-alignment">4.6.4 水平方向の位置揃え: 非推奨</h4>
 
-<p><strong>Terminology Note</strong>: <em>Horizontal alignment</em> is the practice of adding a
-variable number of additional spaces in your code with the goal of making
-certain tokens appear directly below certain other tokens on previous lines.</p>
+<p><strong>用語解説</strong>: <em>水平方向の位置揃え</em>
+は、あるトークンを１つ前の行にある特定のトークンの直下に配置するため、コード内に可変数のスペースを追加するプラクティスです。</p>
 
-<p>This practice is permitted, but it is <strong>generally discouraged</strong> by Google
-Style. It is not even required to <em>maintain</em> horizontal alignment in places
-where it was already used.</p>
+<p>このプラクティスは認められますが、Googleスタイルにおいて<strong>通常は推奨されません</strong>。
+水平方向の位置揃えが既に使われている箇所があったとしても、それを<em>維持</em>する必要すらありません。</p>
 
-<p>Here is an example without alignment, followed by one with alignment.  Both are
-allowed, but the latter is discouraged:</p>
+<p>位置揃えを行っていない例と行った例を示します。両方とも許容されますが、後者は推奨されません:</p>
 
 <pre><code class="language-js prettyprint">{
-  tiny: 42, // this is great
-  longer: 435, // this too
+  tiny: 42, // 素晴らしい
+  longer: 435, // これも
 };
 
 {
-  tiny:   42,  // permitted, but future edits
-  longer: 435, // may leave it unaligned
+  tiny:   42,  // 許容するが、将来の編集で
+  longer: 435, // 位置揃えしないままにしてもよい
 };
 </code></pre>
 
-<p>Tip: Alignment can aid readability, but it creates problems for future
-maintenance. Consider a future change that needs to touch just one line. This
-change may leave the formerly-pleasing formatting mangled, and that is
-allowed. More often it prompts the coder (perhaps you) to adjust whitespace on
-nearby lines as well, possibly triggering a cascading series of
-reformattings. That one-line change now has a <q>blast radius.</q> This can at worst
-result in pointless busywork, but at best it still corrupts version history
-information, slows down reviewers and exacerbates merge conflicts.</p>
+<p>Tip: 位置揃えは可読性を上げる助けになりますが、将来のメンテナンスの点で問題を生じさせます。
+将来その中の1行だけに変更が発生したと考えてみてください。
+変更時に位置揃えをしなければ以前好んで使っていた書式が混在した状態で残るだけで、これは許容されます。
+もっとあり得るのは、コーダ（多分あなた）が周辺の行の空白を変更に合わせて調整しようとすることです。
+これはおそらく玉突き的な再整形のきっかけとなるでしょう。
+ほんの1行の変更のはずが、その範囲は今や <q>爆発的に広がって</q> しまいました。
+最悪の場合これは無意味な作業の増加をもたらします。
+最もましな場合でも、バージョン履歴情報は壊れ、レビューアの作業速度は遅れ、マージ競合を悪化させることになります。</p>
 
 <h4 id="formatting-function-arguments">4.6.5 関数の引数</h4>
 
-<p>Prefer to put all function arguments on the same line as the function name. If doing so would exceed the 80-column limit, the arguments must be line-wrapped in a readable way. To save space, you may wrap as close to 80 as possible, or put each argument on its own line to enhance readability. Indentation should be four spaces. Aligning to the parenthesis is allowed, but discouraged. Below are the most common patterns for argument wrapping:</p>
+<p>全ての引数を関数名と同じ行に置くのが望ましいですが、もしそれによって80文字の上限を超えてしまうなら、
+引数を読み易い方法で折り返さなければなりません。
+領域を節約するためできるだけ80文字に近い位置で折り返すか、可読性を増すため引数ごとに改行を入れます。
+インデントは 4 スペースとすべきです。丸括弧の位置で揃えても構いませんが、推奨しません。
+以下に示すのは最も一般的な引数の折り返しのパターンです:</p>
 
-<pre><code class="language-js prettyprint">// Arguments start on a new line, indented four spaces. Preferred when the
-// arguments don't fit on the same line with the function name (or the keyword
-// "function") but fit entirely on the second line. Works with very long
-// function names, survives renaming without reindenting, low on space.
+<pre><code class="language-js prettyprint">// 引数は新しい行で開始し、スペース4個分インデントする。引数が関数名（または
+// キーワード"function"）と同じ行にある場合には収まらないが、改行すれば全体を
+// 収めることができる場合に好まれる。長い関数名と共に使われていた場合、それが
+// 変更されたとしてもインデントしなおさなくてよく、スペースも少なくて済む。
 doSomething(
     descriptiveArgumentOne, descriptiveArgumentTwo, descriptiveArgumentThree) {
   // &#8230;
 }
 
-// If the argument list is longer, wrap at 80. Uses less vertical space,
-// but violates the rectangle rule and is thus not recommended.
+// もし引数のリストが長いなら、80文字で折り返す。 垂直方向の領域は少なくて
+// 済むが、矩形化規則に違反しているため推奨されない。
 doSomething(veryDescriptiveArgumentNumberOne, veryDescriptiveArgumentTwo,
     tableModelEventHandlerProxy, artichokeDescriptorAdapterIterator) {
   // &#8230;
 }
 
-// Four-space, one argument per line.  Works with long function names,
-// survives renaming, and emphasizes each argument.
+// スペースを4つ空け、1行に1つずつ引数を書く。長い関数名と共に使われていた場合
+// それが変更されたとしても影響を受けず、また個々の引数が強調される。
 doSomething(
     veryDescriptiveArgumentNumberOne,
     veryDescriptiveArgumentTwo,
@@ -688,51 +676,46 @@ doSomething(
 }
 </code></pre>
 
-<h3 id="formatting-grouping-parentheses">4.7 括弧によるグループ化: 推奨</h3>
+<h3 id="formatting-grouping-parentheses">4.7 丸括弧によるグループ化: 推奨</h3>
 
-<p>Optional grouping parentheses are omitted only when the author and reviewer
-agree that there is no reasonable chance that the code will be misinterpreted
-without them, nor would they have made the code easier to read. It is <em>not</em>
-reasonable to assume that every reader has the entire operator precedence table
-memorized.</p>
+<p>グループ化のための丸括弧が省略できるのは、それが無くてもコードが誤って解釈される可能性が無く、
+またそれらがコードの可読性向上にもつながらないと作成者とレビューアが合意した場合のみです。
+全てのコード読者が演算子の優先順位表全部を暗記していると想定するのは合理的とは<em>いえません</em>。</p>
 
-<p>Do not use unnecessary parentheses around the entire expression following
-<code>delete</code>, <code>typeof</code>, <code>void</code>, <code>return</code>, <code>throw</code>, <code>case</code>, <code>in</code>, or <code>of</code>.</p>
+<p>以下の演算子に丸括弧は不要なので使わないでください:
+<code>delete</code>, <code>typeof</code>, <code>void</code>, <code>return</code>,
+<code>throw</code>, <code>case</code>, <code>in</code>, <code>of</code></p>
 
-<p>Parentheses are required for type casts: <code>/** @type {!Foo} */ (foo)</code>.</p>
+<p>型キャストには丸括弧が必要です: <code>/** @type {!Foo} */ (foo)</code></p>
 
 <h3 id="formatting-comments">4.8 コメント</h3>
 
-<p>This section addresses <em>implementation comments</em>. JSDoc is addressed separately
-in <a href="#jsdoc">??</a>.</p>
+<p>この章では<em>実装コメント</em>を扱います。JSDocは <a href="#jsdoc">??</a> で分けて扱います。</p>
 
 <h4 id="formatting-block-comment-style">4.8.1 ブロックコメントのスタイル</h4>
 
-<p>Block comments are indented at the same level as the surrounding code. They may
-be in <code>/* &#8230; */</code> or <code>//</code>-style. For multi-line <code>/* &#8230; */</code> comments, subsequent
-lines must start with * aligned with the <code>*</code> on the previous line, to make
-comments obvious with no extra context.  &#8220;Parameter name&#8221; comments should appear
-after values whenever the value and method name do not sufficiently convey the
-meaning.</p>
+<p>ブロックコメントは周囲のコードと同じレベルでインデントします。
+それらは <code>/* &#8230; */</code> または <code>//</code> というスタイルを取るでしょう。
+複数行の <code>/* &#8230; */</code> コメントでは、2行目以降の行は必ず * から始め、その位置を直前の行の
+<code>*</code> に揃えます。これは追加の文脈なしでコメント行であることを明確にするためです。
+値とメソッド名が十分に意味を伝えていない時には、値の後ろに &#8220;パラメータ名&#8221; コメントが付加されるべきです。</p>
 
 <pre><code class="language-js prettyprint">/*
- * This is
- * okay.
+ * これは
+ * OKです。
  */
 
-// And so
-// is this.
+// これも
+// そうです。
 
-/* This is fine, too. */
+/* これもいいです。 */
 
 someFunction(obviousParam, true /* shouldRender */, 'hello' /* name */);
 </code></pre>
 
-<p>Comments are not enclosed in boxes drawn with asterisks or other characters.</p>
+<p>コメントを、アスタリスクやその他の文字を使って箱型に囲むことはしません。</p>
 
-<p>Do not use JSDoc (<code>/** &#8230; */</code>) for any of the above implementation comments.</p>
-
-
+<p>以上の実装コメントとしての用途にJSDoc（ <code>/** &#8230; */</code> ）を使用しないでください。</p>
 
 <p></p>
 
@@ -742,8 +725,8 @@ TODO(b/buganizer_id): comment
 
 <p></p>
 
-<pre><code class="language-js prettyprint internal">TODO(tashana): Remove this code after the UrlTable2 has been checked in.
-TODO(b/6002235): remove the "Last visitors" feature
+<pre><code class="language-js prettyprint internal">TODO(tashana): UrlTable2 をチェックインしたらこのコードを削除する.
+TODO(b/6002235): 将来 "Last visitors" を削除する。
 </code></pre>
 
 <p></p>
